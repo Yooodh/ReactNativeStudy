@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { Stack } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
@@ -15,6 +15,11 @@ import CategoryButtons from '@/components/CategoryButtons';
 
 const Page = () => {
   const headerHeight = useHeaderHeight();
+  const [category, setCateGory] = useState('All');
+
+  const onCatChanged = (category: string) => {
+    setCateGory(category);
+  };
   return (
     <>
       <Stack.Screen
@@ -68,7 +73,7 @@ const Page = () => {
           </TouchableOpacity>
         </View>
 
-        <CategoryButtons />
+        <CategoryButtons onCategoryChanged={onCatChanged} />
       </View>
     </>
   );
