@@ -1,0 +1,222 @@
+[
+  {
+    "id": "1",
+    "name": "Tropical Paradise Resort",
+    "image": "",
+    "description": "Escape to the ultimate tropical paradise retreat with",
+    "rating": 4.8,
+    "price": "150",
+    "duration": "3",
+    "location": "Pacific Ocean",
+    "category": "Beaches"
+  },
+  {
+    "id": "2",
+    "name": "Alpine Chalet Retreat",
+    "image": "",
+    "description": "Experience the breathtaking beauty of the Alps from",
+    "rating": 4.5,
+    "price": "120",
+    "duration": "4",
+    "location": "Switzerland",
+    "category": "Mountains"
+  },
+  {
+    "id": "3",
+    "name": "Urban Explorer's Dream",
+    "image": "",
+    "description": "Immerse yourself in the vibrant energy of city with",
+    "rating": 4.7,
+    "price": "140",
+    "duration": "2",
+    "location": "USA",
+    "category": "Cities"
+  },
+  {
+    "id": "4",
+    "name": "Enchanted Forest Retreat",
+    "image": "",
+    "description": "Find serenity in the heart of nature with towering",
+    "rating": 4.6,
+    "price": "180",
+    "duration": "5",
+    "location": "USA",
+    "category": "Forests"
+  },
+  {
+    "id": "5",
+    "name": "Tranquil Lakeside Haven",
+    "image": "",
+    "description": "Relax and rejuvenate by the tranquil lakeside,",
+    "rating": 4.9,
+    "price": "120",
+    "duration": "3",
+    "location": "England",
+    "category": "Lakes"
+  },
+  {
+    "id": "6",
+    "name": "Sandy Shores Beach Resort",
+    "image": "",
+    "description": "Indulae in the ultimate beachfront luxury with",
+    "rating": 0.0,
+    "price": "",
+    "duration": "",
+    "location": "",
+    "category": ""
+  },
+  {
+    "id": "7",
+    "name": "Majestic Mountain Resort",
+    "image": "",
+    "description": "",
+    "rating": 4.7,
+    "price": "100",
+    "duration": "7",
+    "location": "Canada",
+    "category": "Mountains"
+  },
+  {
+    "id": "8",
+    "name": "Metropolitan Marvels",
+    "image": "",
+    "description": "Discover the cultural richness and architectural",
+    "rating": 4.6,
+    "price": "170",
+    "duration": "3",
+    "location": "Japan",
+    "category": "Cities"
+  },
+  {
+    "id": "9",
+    "name": "Mystical Forest Sanctyary",
+    "image": "",
+    "description": "",
+    "rating": 0.0,
+    "price": "",
+    "duration": "",
+    "location": "",
+    "category": ""
+  },
+  {
+    "id": "10",
+    "name": "Serene Lake Retreat",
+    "image": "",
+    "description": "",
+    "rating": 0.0,
+    "price": "",
+    "duration": "",
+    "location": "",
+    "category": ""
+  },
+  {
+    "id": "11",
+    "name": "Golden Sands Beach Resort",
+    "image": "",
+    "description": "",
+    "rating": 0.0,
+    "price": "",
+    "duration": "",
+    "location": "",
+    "category": ""
+  },
+  {
+    "id": "12",
+    "name": "Alpine Adventure Lodge",
+    "image": "",
+    "description": "",
+    "rating": 0.0,
+    "price": "",
+    "duration": "",
+    "location": "",
+    "category": ""
+  },
+  {
+    "id": "13",
+    "name": "Cultual Capitals",
+    "image": "",
+    "description": "",
+    "rating": 0.0,
+    "price": "",
+    "duration": "",
+    "location": "",
+    "category": ""
+  },
+  {
+    "id": "14",
+    "name": "Enchanted Grove",
+    "image": "",
+    "description": "",
+    "rating": 0.0,
+    "price": "",
+    "duration": "",
+    "location": "",
+    "category": ""
+  },
+  {
+    "id": "15",
+    "name": "Tranquil Mountain Hideaway",
+    "image": "",
+    "description": "",
+    "rating": 0.0,
+    "price": "",
+    "duration": "",
+    "location": "",
+    "category": ""
+  },
+  {
+    "id": "16",
+    "name": "Seaside Sanctuary",
+    "image": "",
+    "description": "",
+    "rating": 0.0,
+    "price": "",
+    "duration": "",
+    "location": "",
+    "category": ""
+  },
+  {
+    "id": "17",
+    "name": "Alpine Lakeside Lodge",
+    "image": "",
+    "description": "",
+    "rating": 0.0,
+    "price": "",
+    "duration": "",
+    "location": "",
+    "category": ""
+  },
+  {
+    "id": "18",
+    "name": "Urban Oasis",
+    "image": "",
+    "description": "",
+    "rating": 0.0,
+    "price": "",
+    "duration": "",
+    "location": "",
+    "category": ""
+  },
+  {
+    "id": "19",
+    "name": "Whispering Woods Retreat",
+    "image": "",
+    "description": "",
+    "rating": 0.0,
+    "price": "",
+    "duration": "",
+    "location": "",
+    "category": ""
+  },
+  {
+    "id": "20",
+    "name": "Sapphire Shores Beach Resort",
+    "image": "",
+    "description": "",
+    "rating": 0.0,
+    "price": "",
+    "duration": "",
+    "location": "",
+    "category": ""
+  }
+]
