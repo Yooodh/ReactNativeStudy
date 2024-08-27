@@ -2,7 +2,7 @@
   {
     "id": "1",
     "name": "Tropical Paradise Resort",
-    "image": "",
+    "image": "https://loremflickr.com/200/200?random=1",
     "description": "Escape to the ultimate tropical paradise retreat with",
     "rating": 4.8,
     "price": "150",
@@ -13,7 +13,7 @@
   {
     "id": "2",
     "name": "Alpine Chalet Retreat",
-    "image": "",
+    "image": "https://loremflickr.com/200/200?random=2",
     "description": "Experience the breathtaking beauty of the Alps from",
     "rating": 4.5,
     "price": "120",
@@ -24,7 +24,7 @@
   {
     "id": "3",
     "name": "Urban Explorer's Dream",
-    "image": "",
+    "image": "https://loremflickr.com/200/200?random=3",
     "description": "Immerse yourself in the vibrant energy of city with",
     "rating": 4.7,
     "price": "140",
@@ -35,7 +35,7 @@
   {
     "id": "4",
     "name": "Enchanted Forest Retreat",
-    "image": "",
+    "image": "https://loremflickr.com/200/200?random=4",
     "description": "Find serenity in the heart of nature with towering",
     "rating": 4.6,
     "price": "180",
@@ -46,7 +46,7 @@
   {
     "id": "5",
     "name": "Tranquil Lakeside Haven",
-    "image": "",
+    "image": "https://loremflickr.com/200/200?random=5",
     "description": "Relax and rejuvenate by the tranquil lakeside,",
     "rating": 4.9,
     "price": "120",
@@ -57,7 +57,7 @@
   {
     "id": "6",
     "name": "Sandy Shores Beach Resort",
-    "image": "",
+    "image": "https://loremflickr.com/200/200?random=6",
     "description": "Indulae in the ultimate beachfront luxury with",
     "rating": 0.0,
     "price": "",
@@ -68,7 +68,7 @@
   {
     "id": "7",
     "name": "Majestic Mountain Resort",
-    "image": "",
+    "image": "https://loremflickr.com/200/200?random=7",
     "description": "",
     "rating": 4.7,
     "price": "100",
@@ -79,7 +79,7 @@
   {
     "id": "8",
     "name": "Metropolitan Marvels",
-    "image": "",
+    "image": "https://loremflickr.com/200/200?random=8",
     "description": "Discover the cultural richness and architectural",
     "rating": 4.6,
     "price": "170",
@@ -90,7 +90,7 @@
   {
     "id": "9",
     "name": "Mystical Forest Sanctyary",
-    "image": "",
+    "image": "https://loremflickr.com/200/200?random=9",
     "description": "",
     "rating": 0.0,
     "price": "",
@@ -101,7 +101,7 @@
   {
     "id": "10",
     "name": "Serene Lake Retreat",
-    "image": "",
+    "image": "https://loremflickr.com/200/200?random=10",
     "description": "",
     "rating": 0.0,
     "price": "",
@@ -112,7 +112,7 @@
   {
     "id": "11",
     "name": "Golden Sands Beach Resort",
-    "image": "",
+    "image": "https://loremflickr.com/200/200?random=11",
     "description": "",
     "rating": 0.0,
     "price": "",
@@ -123,7 +123,7 @@
   {
     "id": "12",
     "name": "Alpine Adventure Lodge",
-    "image": "",
+    "image": "https://loremflickr.com/200/200?random=12",
     "description": "",
     "rating": 0.0,
     "price": "",
@@ -134,7 +134,7 @@
   {
     "id": "13",
     "name": "Cultual Capitals",
-    "image": "",
+    "image": "https://loremflickr.com/200/200?random=13",
     "description": "",
     "rating": 0.0,
     "price": "",
@@ -145,7 +145,7 @@
   {
     "id": "14",
     "name": "Enchanted Grove",
-    "image": "",
+    "image": "https://loremflickr.com/200/200?random=14",
     "description": "",
     "rating": 0.0,
     "price": "",
@@ -156,7 +156,7 @@
   {
     "id": "15",
     "name": "Tranquil Mountain Hideaway",
-    "image": "",
+    "image": "https://loremflickr.com/200/200?random=15",
     "description": "",
     "rating": 0.0,
     "price": "",
@@ -167,7 +167,7 @@
   {
     "id": "16",
     "name": "Seaside Sanctuary",
-    "image": "",
+    "image": "https://loremflickr.com/200/200?random=16",
     "description": "",
     "rating": 0.0,
     "price": "",
@@ -178,7 +178,7 @@
   {
     "id": "17",
     "name": "Alpine Lakeside Lodge",
-    "image": "",
+    "image": "https://loremflickr.com/200/200?random=17",
     "description": "",
     "rating": 0.0,
     "price": "",
@@ -189,7 +189,7 @@
   {
     "id": "18",
     "name": "Urban Oasis",
-    "image": "",
+    "image": "https://loremflickr.com/200/200?random=18",
     "description": "",
     "rating": 0.0,
     "price": "",
@@ -200,7 +200,7 @@
   {
     "id": "19",
     "name": "Whispering Woods Retreat",
-    "image": "",
+    "image": "https://loremflickr.com/200/200?random=19",
     "description": "",
     "rating": 0.0,
     "price": "",
@@ -211,7 +211,7 @@
   {
     "id": "20",
     "name": "Sapphire Shores Beach Resort",
-    "image": "",
+    "image": "https://loremflickr.com/200/200?random=20",
     "description": "",
     "rating": 0.0,
     "price": "",
