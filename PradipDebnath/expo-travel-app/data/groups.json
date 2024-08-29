@@ -1,0 +1,24 @@
+[
+  {
+    "id": "1",
+    "name": "Holiday Travel Agency",
+    "image": "https://loremflickr.com/200/200?random=1",
+    "rating": 4.7,
+    "reviews": 1450
+  },
+  {
+    "id": "2",
+    "name": "Happy Tour Planners",
+    "image": "https://loremflickr.com/200/200?random=2",
+    "rating": 4.8,
+    "reviews": 650
+  },
+
+  {
+    "id": "3",
+    "name": "Royal Tour & Travels",
+    "image": "https://loremflickr.com/200/200?random=3",
+    "rating": 4.9,
+    "reviews": 550
+  }
+]
