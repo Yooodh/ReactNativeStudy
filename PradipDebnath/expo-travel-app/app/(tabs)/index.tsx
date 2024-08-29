@@ -20,6 +20,7 @@ const Page = () => {
   const [category, setCateGory] = useState('All');
 
   const onCatChanged = (category: string) => {
+    console.log('Category: ', category);
     setCateGory(category);
   };
   return (
@@ -77,7 +78,7 @@ const Page = () => {
 
         <CategoryButtons onCategoryChanged={onCatChanged} />
 
-        <Listings listings={listingData} />
+        <Listings listings={listingData} category={category} />
       </View>
     </>
   );
