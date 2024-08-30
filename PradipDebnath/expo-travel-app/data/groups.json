@@ -2,14 +2,14 @@
   {
     "id": "1",
     "name": "Holiday Travel Agency",
-    "image": "https://loremflickr.com/200/200?random=1",
+    "image": "https://loremflickr.com/200/200?random=21",
     "rating": 4.7,
     "reviews": 1450
   },
   {
     "id": "2",
     "name": "Happy Tour Planners",
-    "image": "https://loremflickr.com/200/200?random=2",
+    "image": "https://loremflickr.com/200/200?random=22",
     "rating": 4.8,
     "reviews": 650
   },
@@ -17,7 +17,7 @@
   {
     "id": "3",
     "name": "Royal Tour & Travels",
-    "image": "https://loremflickr.com/200/200?random=3",
+    "image": "https://loremflickr.com/200/200?random=23",
     "rating": 4.9,
     "reviews": 550
   }
