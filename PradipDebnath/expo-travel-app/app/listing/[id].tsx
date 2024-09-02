@@ -10,7 +10,12 @@ import React from 'react';
 import { Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { ListingType } from '@/types/listingType';
 import listingData from '@/data/destinations.json';
-import { Feather, FontAwesome5, Ionicons } from '@expo/vector-icons';
+import {
+  Feather,
+  FontAwesome,
+  FontAwesome5,
+  Ionicons,
+} from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
 
 const { width } = Dimensions.get('window');
@@ -84,7 +89,58 @@ const ListingDetails = () => {
             />
             <Text style={styles.listingLocationTxt}>{listing.location}</Text>
           </View>
+          <View style={styles.highlightWrapper}>
+            <View style={{ flexDirection: 'row' }}>
+              <View style={styles.highlightIcon}>
+                <Ionicons name='time' size={18} color={Colors.primaryColor} />
+              </View>
+              <View>
+                <Text style={styles.highlightTxt}>Duration</Text>
+                <Text style={styles.highlightTxtVal}>
+                  {listing.duration} Days
+                </Text>
+              </View>
+            </View>
+            <View style={{ flexDirection: 'row' }}>
+              <View style={styles.highlightIcon}>
+                <FontAwesome
+                  name='users'
+                  size={18}
+                  color={Colors.primaryColor}
+                />
+              </View>
+              <View>
+                <Text style={styles.highlightTxt}>Person</Text>
+                <Text style={styles.highlightTxtVal}>{listing.duration}</Text>
+              </View>
+            </View>
+            <View style={{ flexDirection: 'row' }}>
+              <View style={styles.highlightIcon}>
+                <Ionicons name='star' size={18} color={Colors.primaryColor} />
+              </View>
+              <View>
+                <Text style={styles.highlightTxt}>Rating</Text>
+                <Text style={styles.highlightTxtVal}>
+                  {listing.rating} Days
+                </Text>
+              </View>
+            </View>
+          </View>
+
+          <Text style={styles.listingDetails}>{listing.description}</Text>
         </View>
+      </View>
+
+      <View style={styles.footer}>
+        <TouchableOpacity
+          onPress={() => {}}
+          style={[styles.footerBtn, styles.footerBookBtn]}
+        >
+          <Text style={styles.footerBtnTxt}>Book Now</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {}} style={styles.footerBtn}>
+          <Text style={styles.footerBtnTxt}>${listing.price}</Text>
+        </TouchableOpacity>
       </View>
     </>
   );
@@ -120,5 +176,58 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginLeft: 5,
     color: Colors.black,
+  },
+  highlightWrapper: {
+    flexDirection: 'row',
+    marginVertical: 20,
+    justifyContent: 'space-between',
+  },
+  highlightIcon: {
+    backgroundColor: '#F4F4F4',
+    paddingHorizontal: 8,
+    paddingVertical: 5,
+    borderRadius: 8,
+    marginRight: 5,
+    alignItems: 'center',
+  },
+  highlightTxt: {
+    fontSize: 12,
+    color: '#999',
+  },
+  highlightTxtVal: {
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  listingDetails: {
+    fontSize: 16,
+    color: Colors.black,
+    lineHeight: 25,
+    letterSpacing: 0.5,
+  },
+  footer: {
+    flexDirection: 'row',
+    position: 'absolute',
+    bottom: 0,
+    padding: 20,
+    paddingBottom: 30,
+    width: width,
+  },
+  footerBtn: {
+    flex: 1,
+    backgroundColor: Colors.black,
+    padding: 20,
+    borderRadius: 20,
+    alignItems: 'center',
+  },
+  footerBookBtn: {
+    flex: 2,
+    backgroundColor: Colors.primaryColor,
+    marginRight: 20,
+  },
+  footerBtnTxt: {
+    color: Colors.white,
+    fontSize: 16,
+    fontWeight: '600',
+    textTransform: 'uppercase',
   },
 });
