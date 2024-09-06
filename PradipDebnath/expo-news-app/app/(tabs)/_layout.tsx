@@ -1,36 +1,39 @@
-import React from 'react'
-import { Tabs } from 'expo-router'
-import { TabBar } from '@/components/TabBar'
+import React from 'react';
+import { Tabs } from 'expo-router';
+import { TabBar } from '@/components/TabBar';
 
 const TabLayout = () => {
   return (
-    <Tabs tabBar={(props) => <TabBar {...props} />}>
+    <Tabs
+      tabBar={(props) => <TabBar {...props} />}
+      screenOptions={{ headerShown: false }}
+    >
       <Tabs.Screen
-        name="index"
+        name='index'
         options={{
-          title: "Home",
+          title: 'Home',
         }}
       />
       <Tabs.Screen
-        name="discover"
+        name='discover'
         options={{
-          title: "Discover",
+          title: 'Discover',
         }}
       />
       <Tabs.Screen
-        name="saved"
+        name='saved'
         options={{
-          title: "Saved",
+          title: 'Saved',
         }}
       />
       <Tabs.Screen
-        name="settings"
+        name='settings'
         options={{
-          title: "Settings",
+          title: 'Settings',
         }}
       />
     </Tabs>
-  )
-}
+  );
+};
 
-export default TabLayout
+export default TabLayout;
