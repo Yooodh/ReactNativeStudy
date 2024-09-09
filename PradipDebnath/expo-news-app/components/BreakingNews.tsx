@@ -41,6 +41,8 @@ const BreakingNews = ({ newsList }: Props) => {
           pagingEnabled
           onScroll={onScrollHandler}
           scrollEventThrottle={16}
+          onEndReachedThreshold={0.5}
+          onEndReached={() => setData([...data, ...newsList])}
         />
       </View>
     </View>
