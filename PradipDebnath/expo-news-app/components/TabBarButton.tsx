@@ -1,13 +1,13 @@
-import { Pressable, StyleSheet } from "react-native";
-import React, { useEffect } from "react";
-import { icon } from "@/constants/Icons";
+import { Pressable, StyleSheet } from 'react-native';
+import React, { useEffect } from 'react';
+import { icon } from '@/constants/Icons';
 import Animated, {
   interpolate,
   useAnimatedStyle,
   useSharedValue,
   withSpring,
-} from "react-native-reanimated";
-import { Colors } from "@/constants/Colors";
+} from 'react-native-reanimated';
+import { Colors } from '@/constants/Colors';
 
 const TabBarButton = ({
   onPress,
@@ -26,7 +26,7 @@ const TabBarButton = ({
 
   useEffect(() => {
     opacity.value = withSpring(
-      typeof isFocused === "boolean" ? (isFocused ? 1 : 0) : isFocused,
+      typeof isFocused === 'boolean' ? (isFocused ? 1 : 0) : isFocused,
       { duration: 50 }
     );
   }, [opacity, isFocused]);
@@ -69,8 +69,8 @@ export default TabBarButton;
 const styles = StyleSheet.create({
   tabbarBtn: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     gap: 5,
   },
 });
