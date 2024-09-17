@@ -15,7 +15,7 @@ const newsCategoryList = [
     id: 3,
     title: 'Science',
     slug: 'science',
-    selected: true,
+    selected: false,
   },
   {
     id: 4,

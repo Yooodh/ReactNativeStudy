@@ -3,6 +3,9 @@ import React from 'react';
 import { Colors } from '@/constants/Colors';
 import { AntDesign } from '@expo/vector-icons';
 import Animated, {
+  FadeIn,
+  FadeOut,
+  LinearTransition,
   useAnimatedStyle,
   withTiming,
 } from 'react-native-reanimated';
@@ -26,14 +29,36 @@ const CheckBox = ({ label, checked, onPress }: Props) => {
       paddingLeft: 16,
       paddingRight: checked ? 10 : 16,
     };
-  });
+  }, [checked]);
+
+  const rnTextStyle = useAnimatedStyle(() => {
+    return {
+      color: withTiming(checked ? Colors.tint : Colors.black, {
+        duration: 150,
+      }),
+    };
+  }, [checked]);
 
   return (
-    <Animated.View style={[styles.container, rnAnimatedContainerStyle]}>
-      <Text style={styles.label}>{label}</Text>
-      <View style={styles.iconWrapper}>
-        <AntDesign name='checkcircle' size={14} color={Colors.tint}></AntDesign>
-      </View>
+    <Animated.View
+      style={[styles.container, rnAnimatedContainerStyle]}
+      onTouchEnd={onPress}
+      layout={LinearTransition.springify().mass(0.8)}
+    >
+      <Animated.Text style={[styles.label, rnTextStyle]}>{label}</Animated.Text>
+      {checked && (
+        <Animated.View
+          style={styles.iconWrapper}
+          entering={FadeIn.duration(350)}
+          exiting={FadeOut}
+        >
+          <AntDesign
+            name='checkcircle'
+            size={14}
+            color={Colors.tint}
+          ></AntDesign>
+        </Animated.View>
+      )}
     </Animated.View>
   );
 };
