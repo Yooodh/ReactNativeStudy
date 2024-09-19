@@ -1,12 +1,20 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import {
+  ScrollView,
+  TouchableOpacity,
+  Image,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { router, Stack, useLocalSearchParams } from 'expo-router';
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
 import Loading from '@/components/Loading';
 import { NewsDataType } from '@/types';
 import { Colors } from '@/constants/Colors';
 import Moment from 'moment';
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type Props = {};
 
@@ -14,6 +22,7 @@ const NewsDetails = (props: Props) => {
   const { id } = useLocalSearchParams<{ id: string }>();
   const [news, setNews] = useState<NewsDataType[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [bookmark, setBookmark] = useState(false);
 
   useEffect(() => {
     getNews();
@@ -34,6 +43,27 @@ const NewsDetails = (props: Props) => {
       console.log('Error Message', err.message);
     }
   };
+
+  const saveBookmark = async (newsId: string) => {
+    setBookmark(true);
+    await AsyncStorage.getItem('bookmark').then((token) => {
+      const res = JSON.parse(token);
+      if (res !== null) {
+        let data = res.find((value: string) => value === newsId);
+        if (data == null) {
+          res.push(newsId);
+          AsyncStorage.setItem('bookmark', JSON.stringify(res));
+          alert('News Saved!');
+        }
+      } else {
+        let bookmark = [];
+        bookmark.push(newsId);
+        AsyncStorage.setItem('bookmark', JSON.stringify(bookmark));
+        alert('News Saved!');
+      }
+    });
+  };
+
   return (
     <>
       <Stack.Screen
@@ -44,7 +74,11 @@ const NewsDetails = (props: Props) => {
             </TouchableOpacity>
           ),
           headerRight: () => (
-            <TouchableOpacity onPress={() => {}}>
+            <TouchableOpacity
+              onPress={() => {
+                saveBookmark(news[0].article_id);
+              }}
+            >
               <Ionicons name='heart-outline' size={22} />
             </TouchableOpacity>
           ),
@@ -61,7 +95,7 @@ const NewsDetails = (props: Props) => {
           <Text style={styles.title}>{news[0].title}</Text>
           <View style={styles.newsInfoWrapper}>
             <Text style={styles.newsInfo}>
-              {Moment(news[0].pubDate).format('MMM DD, hh:,, a')}
+              {Moment(news[0].pubDate).format('MMMM DD, hh:mm a')}
             </Text>
             <Text style={styles.newsInfo}>{news[0].source_name}</Text>
           </View>
