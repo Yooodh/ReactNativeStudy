@@ -1,10 +1,15 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { Link, router, Stack, useLocalSearchParams } from 'expo-router';
 import { NewsDataType } from '@/types';
 import { Ionicons } from '@expo/vector-icons';
 import Loading from '@/components/Loading';
-import { FlatList } from 'react-native-gesture-handler';
 import { NewsItem } from '@/components/NewsList';
 
 type Props = {};
