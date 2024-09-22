@@ -31,7 +31,7 @@ const Page = (props: Props) => {
       if (res) {
         console.log('Bookmark res: ', res);
         let query_string = res.join(',');
-        console.log('Query string: ', ', query_string');
+        console.log('Query string: ', query_string);
 
         const response = await axios.get(
           `https://newsdata.io/api/1/news?apikey=${process.env.EXPO_PUBLIC_API_KEY}&id=${query_string}`
