@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import LoginScreen from './Apps/Screens/LoginScreen';
 import { client } from './Apps/Utils/KindConfig';
+import { NavigationContainer } from '@react-navigation/native';
+import TabNavigation from '@/Apps/Navigations/TabNavigation';
 
 export default function App() {
   useEffect(() => {
@@ -17,6 +19,7 @@ export default function App() {
       console.log('Authenticated!!!');
       // Need to implement, e.g: call an api, etc...
     } else {
+      return <LoginScreen />;
       // Need to implement, e.g: redirect user to sign in, etc..
     }
   };
@@ -24,6 +27,9 @@ export default function App() {
   return (
     <View style={styles.container}>
       <LoginScreen />
+      {/* <NavigationContainer>
+        <TabNavigation />
+      </NavigationContainer> */}
     </View>
   );
 }

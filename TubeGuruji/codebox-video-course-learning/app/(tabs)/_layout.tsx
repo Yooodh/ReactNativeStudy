@@ -1,44 +1,57 @@
-import { Tabs } from 'expo-router';
+import { View, Text } from 'react-native';
 import React from 'react';
+import HomeScreen from '@/Apps/Screens/HomeScreen';
+import MyCourseScreen from '@/Apps/Screens/MyCourseScreen';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from '@expo/vector-icons';
+import Colors from '@/Apps/Utils/Colors';
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+const Tab = createBottomTabNavigator();
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+export default function TabNavigation() {
   return (
-    <Tabs
+    <Tab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
+        tabBarActiveTintColor: Colors.PRIMARY,
       }}
     >
-      <Tabs.Screen
-        name='index'
+      <Tab.Screen
+        name='Home'
+        component={HomeScreen}
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? 'home' : 'home-outline'}
-              color={color}
-            />
+          tabBarIcon: (color, size) => (
+            <Ionicons name='home' size={24} color={color} />
+          ),
+          tabBarLabel: () => (
+            <Text style={{ color: Colors.PRIMARY }}>Home</Text>
           ),
         }}
       />
-      <Tabs.Screen
-        name='explore'
+      <Tab.Screen
+        name='MyCourse'
+        component={MyCourseScreen}
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? 'code-slash' : 'code-slash-outline'}
-              color={color}
-            />
+          tabBarIcon: (color, size) => (
+            <Ionicons name='home' size={24} color={color} />
+          ),
+          tabBarLabel: () => (
+            <Text style={{ color: Colors.PRIMARY }}>Home</Text>
           ),
         }}
       />
-    </Tabs>
+      <Tab.Screen
+        name='Profile'
+        component={MyCourseScreen}
+        options={{
+          tabBarIcon: (color, size) => (
+            <Ionicons name='home' size={24} color={color} />
+          ),
+          tabBarLabel: () => (
+            <Text style={{ color: Colors.PRIMARY }}>Home</Text>
+          ),
+        }}
+      />
+    </Tab.Navigator>
   );
 }
