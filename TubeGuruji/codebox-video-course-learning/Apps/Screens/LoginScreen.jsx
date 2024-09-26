@@ -8,10 +8,27 @@ import {
 } from 'react-native';
 import React from 'react';
 import Colors from '@/Apps/Utils/Colors';
+import { client } from './../Utils/KindConfig';
 
 type Props = {};
 
 const LoginScreen = (props: Props) => {
+  const handleSignUp = async () => {
+    const token = await client.register();
+    if (token) {
+      console.log('Authenticated Successfully!!!');
+      // User was authenticated
+    }
+  };
+
+  const handleSignIn = async () => {
+    const token = await client.login();
+    if (token) {
+      console.log('Authenticated Successfully!!!');
+      // User was authenticated
+    }
+  };
+
   return (
     <ScrollView>
       <View style={styles.container}>
@@ -28,10 +45,7 @@ const LoginScreen = (props: Props) => {
           </Text>
 
           {/* Sign In button */}
-          <TouchableOpacity
-            onPress={() => console.log('Click Sign In')}
-            style={styles.button}
-          >
+          <TouchableOpacity onPress={handleSignIn} style={styles.button}>
             <Text
               style={{ textAlign: 'center', color: Colors.WHITE, fontSize: 18 }}
             >
@@ -39,7 +53,7 @@ const LoginScreen = (props: Props) => {
             </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => console.log('Click New Account')}>
+          <TouchableOpacity onPress={handleSignUp}>
             <Text
               style={{
                 marginTop: 10,
