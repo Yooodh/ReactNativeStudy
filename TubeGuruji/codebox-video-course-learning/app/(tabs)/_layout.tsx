@@ -2,6 +2,7 @@ import { View, Text } from 'react-native';
 import React from 'react';
 import HomeScreen from '@/Apps/Screens/HomeScreen';
 import MyCourseScreen from '@/Apps/Screens/MyCourseScreen';
+import ProfileScreen from '@/Apps/Screens/ProfileScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '@/Apps/Utils/Colors';
@@ -20,11 +21,11 @@ export default function TabNavigation() {
         name='Home'
         component={HomeScreen}
         options={{
-          tabBarIcon: (color, size) => (
+          tabBarIcon: ({ color, size }) => (
             <Ionicons name='home' size={24} color={color} />
           ),
-          tabBarLabel: () => (
-            <Text style={{ color: Colors.PRIMARY }}>Home</Text>
+          tabBarLabel: ({ color }) => (
+            <Text style={{ color: color }}>Home</Text>
           ),
         }}
       />
@@ -32,23 +33,23 @@ export default function TabNavigation() {
         name='MyCourse'
         component={MyCourseScreen}
         options={{
-          tabBarIcon: (color, size) => (
-            <Ionicons name='home' size={24} color={color} />
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name='book' size={24} color={color} />
           ),
-          tabBarLabel: () => (
-            <Text style={{ color: Colors.PRIMARY }}>Home</Text>
+          tabBarLabel: ({ color }) => (
+            <Text style={{ color: color }}>Home</Text>
           ),
         }}
       />
       <Tab.Screen
         name='Profile'
-        component={MyCourseScreen}
+        component={ProfileScreen}
         options={{
-          tabBarIcon: (color, size) => (
-            <Ionicons name='home' size={24} color={color} />
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name='person-circle' size={24} color={color} />
           ),
-          tabBarLabel: () => (
-            <Text style={{ color: Colors.PRIMARY }}>Home</Text>
+          tabBarLabel: ({ color }) => (
+            <Text style={{ color: color }}>Home</Text>
           ),
         }}
       />
