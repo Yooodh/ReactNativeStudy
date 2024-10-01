@@ -6,17 +6,20 @@ import {
   View,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import Colors from '@/Apps/Utils/Colors';
 import { client } from './../Utils/KindConfig';
+import { AuthContext } from '@/App';
 
 type Props = {};
 
 const LoginScreen = (props: Props) => {
+  const { auth, setAuth } = useContext(AuthContext);
   const handleSignUp = async () => {
     const token = await client.register();
     if (token) {
       console.log('Authenticated Successfully!!!');
+      setAuth(true);
       // User was authenticated
     }
   };
@@ -25,6 +28,7 @@ const LoginScreen = (props: Props) => {
     const token = await client.login();
     if (token) {
       console.log('Authenticated Successfully!!!');
+      setAuth(true);
       // User was authenticated
     }
   };
