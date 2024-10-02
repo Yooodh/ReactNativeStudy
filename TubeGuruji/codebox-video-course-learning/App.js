@@ -4,10 +4,17 @@ import LoginScreen from './Apps/Screens/LoginScreen';
 import { client } from './Apps/Utils/KindConfig';
 import { NavigationContainer } from '@react-navigation/native';
 import TabNavigation from '@/Apps/Navigations/TabNavigation';
+import { useFonts } from 'expo-font';
 
 export const AuthContext = createContext();
 
 export default function App() {
+  const [fontsLoded, fontError] = useFonts({
+    outfit: require('./assets/fonts/Outfit-Regular.ttf'),
+    'outfit-medium': require('./assets/fonts/Outfit-Medium.ttf'),
+    'outfit-bold': require('./assets/fonts/Outfit-Bold.ttf'),
+  });
+
   const [auth, setAuth] = useState(false);
   useEffect(() => {
     checkAuthenticate();

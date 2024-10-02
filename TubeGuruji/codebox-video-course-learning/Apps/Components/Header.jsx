@@ -31,9 +31,14 @@ const Header = () => {
           style={{ width: 45, height: 45, borderRadius: 99 }}
         />
         <View>
-          <Text style={{ fontSize: 18 }}>Welcome,</Text>
+          <Text style={{ fontSize: 18, fontFamily: 'outfit' }}>Welcome,</Text>
           <Text
-            style={{ fontSize: 20, fontWeight: 'bold', color: Colors.PRIMARY }}
+            style={{
+              fontSize: 20,
+              fontWeight: 'bold',
+              color: Colors.PRIMARY,
+              fontFamily: 'outfit-bold',
+            }}
           >
             Hello {userDetail?.given_name}
           </Text>
@@ -41,7 +46,10 @@ const Header = () => {
       </View>
       <View style={styles.input}>
         <Ionicons name='search' size={24} color={Colors.GRAY} />
-        <TextInput placeholder='Search' />
+        <TextInput
+          placeholder='Search'
+          style={{ fontFamily: 'outfit', width: '100%' }}
+        />
       </View>
     </>
   );
