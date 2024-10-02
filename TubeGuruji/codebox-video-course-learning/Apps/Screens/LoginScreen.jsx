@@ -11,9 +11,7 @@ import Colors from '@/Apps/Utils/Colors';
 import { client } from './../Utils/KindConfig';
 import { AuthContext } from '@/App';
 
-type Props = {};
-
-const LoginScreen = (props: Props) => {
+export default function LoginScreen() {
   const { auth, setAuth } = useContext(AuthContext);
   const handleSignUp = async () => {
     const token = await client.register();
@@ -73,9 +71,7 @@ const LoginScreen = (props: Props) => {
       </View>
     </ScrollView>
   );
-};
-
-export default LoginScreen;
+}
 
 const styles = StyleSheet.create({
   button: {

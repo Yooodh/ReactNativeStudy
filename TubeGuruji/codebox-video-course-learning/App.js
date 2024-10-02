@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React, { createContext, useEffect, useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
 import LoginScreen from './Apps/Screens/LoginScreen';
 import { client } from './Apps/Utils/KindConfig';
 import { NavigationContainer } from '@react-navigation/native';
@@ -28,7 +27,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <LoginScreen />
+      {/* <LoginScreen /> */}
       <AuthContext.Provider value={{ auth, setAuth }}>
         <NavigationContainer>
           {auth ? <TabNavigation /> : <LoginScreen />}
