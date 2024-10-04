@@ -33,7 +33,7 @@ export default function HomeScreen() {
     <View style={{ padding: 20, marginTop: 25 }}>
       <Header />
       {/* Category List */}
-      <CategoryList />
+      <CategoryList categories={categories} />
     </View>
   );
 }
