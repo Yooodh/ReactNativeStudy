@@ -21,6 +21,40 @@ const getCategory = async () => {
   return result;
 };
 
+const getCourseList = async () => {
+  const query = gql`
+    query MyQuery {
+      courseLists(first: 50, orderBy: createdAt_DESC) {
+        author
+        description
+        semoUrl
+        free
+        id
+        name
+        slug
+        sourceCode
+        tag
+        youtubeUrl
+        banner {
+          url
+        }
+        chapter {
+          ... on Chapter {
+            id
+            name
+            video {
+              url
+            }
+          }
+        }
+      }
+    }
+  `;
+  const result = await request(MASTER_URL, query);
+  return result;
+};
+
 export default {
   getCategory,
+  getCourseList,
 };
