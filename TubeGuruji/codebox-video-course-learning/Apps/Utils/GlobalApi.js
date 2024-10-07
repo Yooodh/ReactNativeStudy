@@ -38,7 +38,7 @@ const getCourseList = async () => {
         banner {
           url
         }
-        chapter {
+        chapter(first: 50) {
           ... on Chapter {
             id
             name

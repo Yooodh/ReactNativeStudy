@@ -7,6 +7,8 @@ export default function CourseList({ courseList }) {
     <View>
       <FlatList
         data={courseList}
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
         renderItem={({ item, index }) => <CourseItem course={item} />}
       />
     </View>
