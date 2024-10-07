@@ -1,4 +1,4 @@
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, ScrollView } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../App';
 import { client } from '../Utils/KindConfig';
@@ -7,6 +7,7 @@ import GlobalApi from './../Utils/GlobalApi';
 import CategoryList from '../Components/CategoryList';
 import SectionHeading from '../Components/SectionHeading';
 import CourseList from '../Components/CourseList';
+import courseListVertical from '../Components/CourseListVertical';
 
 export default function HomeScreen() {
   // const { auth, setAuth } = useContext(AuthContext);
@@ -39,15 +40,27 @@ export default function HomeScreen() {
     });
   };
 
+  const getFilterCourseList = (tag) => {
+    const result = courseList.filter((item) => item.tag.includes(tag));
+    return result;
+  };
   return (
-    <View style={{ padding: 20, marginTop: 25 }}>
+    <ScrollView style={{ padding: 20, marginTop: 25 }}>
       <Header />
       {/* Category List */}
       <CategoryList categories={categories} />
 
-      {/* Course List */}
+      {/* All Course List */}
       <SectionHeading heading={'Latest Courses'} />
       <CourseList courseList={courseList} />
-    </View>
+
+      {/* React Native Course List */}
+      <SectionHeading heading={'React Native Courses'} />
+      <CourseList courseList={getFilterCourseList('react_native')} />
+
+      {/* Popular Course List */}
+      <SectionHeading heading={'Popular Course'} />
+      <courseListVertical />
+    </ScrollView>
   );
 }

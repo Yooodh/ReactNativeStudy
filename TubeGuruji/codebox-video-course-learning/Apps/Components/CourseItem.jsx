@@ -45,12 +45,26 @@ export default function CourseItem({ course }) {
                 alignItems: 'center',
               }}
             >
-              <Ionicons name='book' size={24} color={Colors.PRIMARY} />
+              <Ionicons name='book' size={20} color={Colors.PRIMARY} />
               <Text style={{ color: Colors.GRAY, fontFamily: 'outfit' }}>
                 {course.chapter?.length} Chapters
               </Text>
             </View>
-          ) : null}
+          ) : (
+            <View
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                gap: 4,
+                alignItems: 'center',
+              }}
+            >
+              <Ionicons name='logo-youtube' size={20} color={'red'} />
+              <Text style={{ color: Colors.GRAY, fontFamily: 'outfit' }}>
+                Watch On Youtube
+              </Text>
+            </View>
+          )}
           <Text style={{ fontFamily: 'outfit-bold', color: Colors.PRIMARY }}>
             {course.free ? 'Free' : 'Paid'}
           </Text>
