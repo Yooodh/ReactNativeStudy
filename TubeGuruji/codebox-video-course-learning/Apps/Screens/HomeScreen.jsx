@@ -60,7 +60,7 @@ export default function HomeScreen() {
 
       {/* Popular Course List */}
       <SectionHeading heading={'Popular Course'} />
-      <courseListVertical />
+      {/* <courseListVertical /> */}
     </ScrollView>
   );
 }

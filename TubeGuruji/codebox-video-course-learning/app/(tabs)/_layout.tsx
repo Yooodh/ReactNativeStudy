@@ -6,6 +6,8 @@ import ProfileScreen from '@/Apps/Screens/ProfileScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '@/Apps/Utils/Colors';
+import HomeNavigation from '@/Apps/Navigations/HomeNavigation';
+import CourseDetailScreen from '@/Apps/Screens/CourseDetailScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -51,6 +53,17 @@ export default function TabNavigation() {
           tabBarLabel: ({ color }) => (
             <Text style={{ color: color }}>Profile</Text>
           ),
+        }}
+      />
+
+      <Tab.Screen
+        name='CourseDetailScreen'
+        component={CourseDetailScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name='mail' size={24} color={color} />
+          ),
+          tabBarLabel: ({ color }) => <Text style={{ color: color }}>o</Text>,
         }}
       />
     </Tab.Navigator>

@@ -1,11 +1,19 @@
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 import Colors from '../Utils/Colors';
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 export default function CourseItem({ course }) {
+  const navigation = useNavigation();
+
   return (
-    <View
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate('course-detail', {
+          course: course,
+        })
+      }
       style={{
         backgroundColor: Colors.WHITE,
         width: 260,
@@ -23,6 +31,7 @@ export default function CourseItem({ course }) {
         <Text style={{ fontSize: 16, fontFamily: 'outfit-bold' }}>
           {course.name}
         </Text>
+
         <Text
           style={{ fontSize: 14, fontFamily: 'outfit', color: Colors.GRAY }}
         >
@@ -70,6 +79,6 @@ export default function CourseItem({ course }) {
           </Text>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
