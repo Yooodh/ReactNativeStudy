@@ -8,7 +8,7 @@ import SectionHeading from './SectionHeading';
 export default function CourseIntro({ course }) {
   return (
     course && (
-      <View>
+      <View style={{}}>
         <Video
           style={styles.video}
           source={{
@@ -19,7 +19,15 @@ export default function CourseIntro({ course }) {
           resizeMode={ResizeMode.CONTAIN}
           isLooping
         />
-        <View style={{ display: 'flex', gap: 10 }}>
+        <View
+          style={{
+            display: 'flex',
+            backgroundColor: Colors.WHITE,
+            padding: 15,
+            borderRadius: 10,
+            gap: 10,
+          }}
+        >
           <Text style={{ fontSize: 20, fontFamily: 'outfit-bold' }}>
             {course.name}
           </Text>
@@ -70,7 +78,10 @@ export default function CourseIntro({ course }) {
             </Text>
           </View>
           <SectionHeading heading={'Description'} />
-          <Text numberOfLines={5} style={{ marginTop: -10 }}>
+          <Text
+            numberOfLines={5}
+            style={{ marginTop: -10, fontFamily: 'outfit' }}
+          >
             {course?.description}
           </Text>
         </View>

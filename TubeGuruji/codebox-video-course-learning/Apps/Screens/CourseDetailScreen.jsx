@@ -6,6 +6,8 @@ import Colors from '../Utils/Colors';
 import { useNavigation } from 'expo-router';
 import CourseIntro from '../Components/CourseIntro';
 import SourceSection from '../Components/SourceSection';
+import EnrollmentSection from '../Components/EnrollmentSection';
+import LessionSection from '../Components/LessionSection';
 
 export default function CourseDetailScreen() {
   const { params } = useRoute();
@@ -39,6 +41,12 @@ export default function CourseDetailScreen() {
 
       {/* Course Section */}
       <SourceSection />
+
+      {/* Enroll Section */}
+      <EnrollmentSection />
+
+      {/* Lession Section */}
+      <LessionSection course={course} />
     </View>
   );
 }

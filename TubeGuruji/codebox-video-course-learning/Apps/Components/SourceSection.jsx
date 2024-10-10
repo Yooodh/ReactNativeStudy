@@ -7,9 +7,11 @@ export default function SourceSection() {
     <View
       style={{
         display: 'flex',
+        gap: 10,
         flexDirection: 'row',
         justifyContent: 'space-evenly',
-        marginTop: 20,
+        marginTop: 10,
+        marginBottom: 10,
       }}
     >
       <View
@@ -18,6 +20,8 @@ export default function SourceSection() {
           backgroundColor: Colors.WHITE,
           alignItems: 'center',
           borderRadius: 10,
+          width: 120,
+          borderWidth: 0.4,
         }}
       >
         <Image
@@ -32,6 +36,8 @@ export default function SourceSection() {
           backgroundColor: Colors.WHITE,
           alignItems: 'center',
           borderRadius: 10,
+          width: 120,
+          borderWidth: 0.4,
         }}
       >
         <Image
@@ -46,6 +52,8 @@ export default function SourceSection() {
           backgroundColor: Colors.WHITE,
           alignItems: 'center',
           borderRadius: 10,
+          width: 120,
+          borderWidth: 0.4,
         }}
       >
         <Image
