@@ -5,6 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import Colors from '../Utils/Colors';
 import { useNavigation } from 'expo-router';
 import CourseIntro from '../Components/CourseIntro';
+import SourceSection from '../Components/SourceSection';
 
 export default function CourseDetailScreen() {
   const { params } = useRoute();
@@ -35,6 +36,9 @@ export default function CourseDetailScreen() {
 
       {/* Course Intro */}
       <CourseIntro course={course} />
+
+      {/* Course Section */}
+      <SourceSection />
     </View>
   );
 }

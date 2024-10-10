@@ -3,6 +3,7 @@ import React from 'react';
 import { ResizeMode, Video } from 'expo-av';
 import Colors from '../Utils/Colors';
 import { Ionicons } from '@expo/vector-icons';
+import SectionHeading from './SectionHeading';
 
 export default function CourseIntro({ course }) {
   return (
@@ -68,6 +69,10 @@ export default function CourseIntro({ course }) {
               {course.free ? 'Free' : 'Paid'}
             </Text>
           </View>
+          <SectionHeading heading={'Description'} />
+          <Text numberOfLines={5} style={{ marginTop: -10 }}>
+            {course?.description}
+          </Text>
         </View>
       </View>
     )
