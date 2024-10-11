@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
@@ -18,7 +18,7 @@ export default function CourseDetailScreen() {
   //   setCourse(params.course);
   // }, [params]);
   return (
-    <View style={{ padding: 20, marginTop: 25 }}>
+    <ScrollView style={{ padding: 20, marginTop: 25 }}>
       <View
         style={{
           display: 'flex',
@@ -47,6 +47,6 @@ export default function CourseDetailScreen() {
 
       {/* Lession Section */}
       <LessionSection course={course} />
-    </View>
+    </ScrollView>
   );
 }
