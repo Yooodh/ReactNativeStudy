@@ -16,6 +16,7 @@ export default function CourseDetailScreen() {
   const [course, setCourse] = useState();
   const { userDetail, setUserDetail } = useContext(UserDetailContext);
   const navigation = useNavigation();
+  const [userEnrollment, setUserEnrollment] = useState();
 
   useEffect(() => {
     setCourse(params.course);
@@ -29,6 +30,7 @@ export default function CourseDetailScreen() {
     GlobalApi.checkUserCourseEnrollment(course?.slug, userDetail.email).then(
       (resp) => {
         console.log('--', resp);
+        setUserEnrollment(resp.userEnrollCourses);
       }
     );
   };
@@ -55,10 +57,10 @@ export default function CourseDetailScreen() {
       <CourseIntro course={course} />
 
       {/* Course Section */}
-      <SourceSection />
+      <SourceSection course={course} userEnrollment={userEnrollment} />
 
       {/* Enroll Section */}
-      <EnrollmentSection />
+      <EnrollmentSection userEnrollment={userEnrollment} />
 
       {/* Lession Section */}
       <LessionSection course={course} />

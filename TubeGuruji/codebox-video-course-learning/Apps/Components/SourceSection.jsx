@@ -1,8 +1,17 @@
-import { View, Text, Image } from 'react-native';
-import React from 'react';
+import { View, Text, Image, TouchableOpacity, Linking } from 'react-native';
+import React, { useState } from 'react';
 import Colors from '../Utils/Colors';
 
-export default function SourceSection() {
+export default function SourceSection({ course, userEnrollment }) {
+  const [isMember, setIsMember] = useState(false);
+
+  const onSourceClick = (url) => {
+    // console.log(url);
+    if (isMember) {
+      Linking.openURL(url);
+    }
+  };
+
   return (
     <View
       style={{
@@ -14,7 +23,8 @@ export default function SourceSection() {
         marginBottom: 10,
       }}
     >
-      <View
+      <TouchableOpacity
+        onPress={() => onSourceClick(course.sourceCode)}
         style={{
           padding: 10,
           backgroundColor: Colors.WHITE,
@@ -29,8 +39,9 @@ export default function SourceSection() {
           style={{ width: 40, height: 40 }}
         />
         <Text style={{ fontSize: 14, fontFamily: 'outfit' }}>Source Code</Text>
-      </View>
-      <View
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => onSourceClick(course.demoUrl)}
         style={{
           padding: 10,
           backgroundColor: Colors.WHITE,
@@ -45,8 +56,9 @@ export default function SourceSection() {
           style={{ width: 40, height: 40 }}
         />
         <Text style={{ fontSize: 14, fontFamily: 'outfit' }}>Demo</Text>
-      </View>
-      <View
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => onSourceClick(course.youtubeUrl)}
         style={{
           padding: 10,
           backgroundColor: Colors.WHITE,
@@ -61,7 +73,7 @@ export default function SourceSection() {
           style={{ width: 40, height: 40 }}
         />
         <Text style={{ fontSize: 14, fontFamily: 'outfit' }}>Youtube</Text>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 }

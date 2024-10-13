@@ -1,9 +1,12 @@
 import { View, Text } from 'react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Colors from '../Utils/Colors';
 
-export default function EnrollmentSection() {
-  const [isEnrolled, setIsEnrolled] = useState(false);
+export default function EnrollmentSection({ userEnrollment }) {
+  // const [isEnrolled, setIsEnrolled] = useState(false);
+  useEffect(() => {
+    // console.log('--', userEnrollment);
+  }, []);
   return (
     <View
       style={{
@@ -12,7 +15,7 @@ export default function EnrollmentSection() {
         borderRadius: 10,
       }}
     >
-      {isEnrolled ? (
+      {userEnrollment?.length > 0 ? (
         <Text
           style={{
             textAlign: 'center',
