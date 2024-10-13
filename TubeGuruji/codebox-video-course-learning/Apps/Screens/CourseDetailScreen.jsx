@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '../Utils/Colors';
@@ -8,15 +8,30 @@ import CourseIntro from '../Components/CourseIntro';
 import SourceSection from '../Components/SourceSection';
 import EnrollmentSection from '../Components/EnrollmentSection';
 import LessionSection from '../Components/LessionSection';
+import { UserDetailContext } from '@/App';
+import GlobalApi from '../Utils/GlobalApi';
 
 export default function CourseDetailScreen() {
   const { params } = useRoute();
   const [course, setCourse] = useState();
+  const { userDetail, setUserDetail } = useContext(UserDetailContext);
   const navigation = useNavigation();
 
-  // useEffect(() => {
-  //   setCourse(params.course);
-  // }, [params]);
+  useEffect(() => {
+    setCourse(params.course);
+    params && checkIsUserEnrollToCourse();
+  }, [params && userDetail]);
+
+  useEffect;
+
+  const checkIsUserEnrollToCourse = () => {
+    // email slug
+    GlobalApi.checkUserCourseEnrollment(course?.slug, userDetail.email).then(
+      (resp) => {
+        console.log('--', resp);
+      }
+    );
+  };
   return (
     <ScrollView style={{ padding: 20, marginTop: 25 }}>
       <View

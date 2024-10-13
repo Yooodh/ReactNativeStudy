@@ -8,8 +8,9 @@ import { useFonts } from 'expo-font';
 import HomeNavigation from './Apps/Navigations/HomeNavigation';
 
 export const AuthContext = createContext();
-
+export const UserDetailContext = createContext();
 export default function App() {
+  const [userDetail, setUserDetail] = useState();
   const [fontsLoded, fontError] = useFonts({
     outfit: require('./assets/fonts/Outfit-Regular.ttf'),
     'outfit-medium': require('./assets/fonts/Outfit-Medium.ttf'),
@@ -25,6 +26,7 @@ export default function App() {
     // Using `isAuthenticated` to check if the user is authenticated or not
     if (await client.isAuthenticated) {
       const userProfile = await client.getUserDetails();
+      setUserDetail(userProfile);
       setAuth(true);
       // Need to implement, e.g: call an api, etc...
     } else {
@@ -37,9 +39,11 @@ export default function App() {
     <View style={styles.container}>
       {/* <LoginScreen /> */}
       <AuthContext.Provider value={{ auth, setAuth }}>
-        <NavigationContainer>
-          {auth ? <HomeNavigation /> : <LoginScreen />}
-        </NavigationContainer>
+        <UserDetailContext.Provider value={{ userDetail, setUserDetail }}>
+          <NavigationContainer>
+            {auth ? <HomeNavigation /> : <LoginScreen />}
+          </NavigationContainer>
+        </UserDetailContext.Provider>
       </AuthContext.Provider>
     </View>
   );
