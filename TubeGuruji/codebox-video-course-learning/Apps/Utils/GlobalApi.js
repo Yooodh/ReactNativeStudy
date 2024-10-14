@@ -83,8 +83,37 @@ const checkUserCourseEnrollment = async (slug, email) => {
   return result;
 };
 
+const saveUserCouseEnrollment = async (slug, email) => {
+  const query =
+    gql`
+    mutation MyMutation {
+      createUserEnrollCourse(
+        data: {
+          courseId: "` +
+    slug +
+    `"
+          courseList: { connect: { slug: "` +
+    slug +
+    `" } }
+          userEmail: "` +
+    email +
+    `"
+        }
+      ) {
+        id
+      }
+      publishManyUserEnrollCourses {
+          count
+      }
+    }
+  `;
+  const result = await request(MASTER_URL, query);
+  return result;
+};
+
 export default {
   getCategory,
   getCourseList,
   checkUserCourseEnrollment,
+  saveUserCouseEnrollment,
 };

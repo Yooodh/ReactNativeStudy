@@ -34,6 +34,30 @@ export default function CourseDetailScreen() {
       }
     );
   };
+
+  const onEnrollmentPress = () => {
+    if (course?.free) {
+      GlobalApi.saveUserCouseEnrollment(course.slug, userDetail.email).then(
+        (resp) => {
+          console.log(resp);
+          if (resp) {
+            Alert.alert('Great!!!', 'You just enrolled to new course.', [
+              {
+                test: 'Ok',
+                onPress: () => console.log('Ok Press'),
+                style: 'cancel',
+              },
+            ]);
+            checkIsUserEnrollToCourse();
+          }
+        }
+      );
+    } else {
+      console.log('Need membership');
+      //check is Member
+    }
+  };
+
   return (
     <ScrollView style={{ padding: 20, marginTop: 25 }}>
       <View
@@ -60,10 +84,13 @@ export default function CourseDetailScreen() {
       <SourceSection course={course} userEnrollment={userEnrollment} />
 
       {/* Enroll Section */}
-      <EnrollmentSection userEnrollment={userEnrollment} />
+      <EnrollmentSection
+        userEnrollment={userEnrollment}
+        onEnrollmentPress={() => onEnrollmentPress()}
+      />
 
       {/* Lession Section */}
-      <LessionSection course={course} />
+      <LessionSection course={course} userEnrollment={userEnrollment} />
     </ScrollView>
   );
 }

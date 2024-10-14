@@ -4,8 +4,8 @@ import SectionHeading from './SectionHeading';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '../Utils/Colors';
 
-export default function LessionSection({ course }) {
-  const [isEnrolled, setIsEnrolled] = useState(false);
+export default function LessionSection({ course, userEnrollment }) {
+  // const [isEnrolled, setIsEnrolled] = useState(false);
   return (
     <View>
       <SectionHeading heading={'Lessions'} />
@@ -52,7 +52,7 @@ export default function LessionSection({ course }) {
               </Text>
             </View>
 
-            {isEnrolled || index == 0 ? (
+            {userEnrollment?.length > 0 || index == 0 ? (
               <Ionicons name='play-circle' size={34} color={Colors.PRIMARY} />
             ) : (
               <Ionicons name='lock-closed' size={28} color={Colors.PRIMARY} />

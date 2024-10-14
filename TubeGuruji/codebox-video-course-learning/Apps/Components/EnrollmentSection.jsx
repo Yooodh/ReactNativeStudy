@@ -1,12 +1,16 @@
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import Colors from '../Utils/Colors';
 
-export default function EnrollmentSection({ userEnrollment }) {
+export default function EnrollmentSection({
+  userEnrollment,
+  onEnrollmentPress,
+}) {
   // const [isEnrolled, setIsEnrolled] = useState(false);
   useEffect(() => {
     // console.log('--', userEnrollment);
   }, []);
+
   return (
     <View
       style={{
@@ -16,27 +20,31 @@ export default function EnrollmentSection({ userEnrollment }) {
       }}
     >
       {userEnrollment?.length > 0 ? (
-        <Text
-          style={{
-            textAlign: 'center',
-            fontFamily: 'outfit-medium',
-            fontSize: 15,
-            color: Colors.WHITE,
-          }}
-        >
-          Continue
-        </Text>
+        <TouchableOpacity onPress={() => console.log('Continue')}>
+          <Text
+            style={{
+              textAlign: 'center',
+              fontFamily: 'outfit-medium',
+              fontSize: 15,
+              color: Colors.WHITE,
+            }}
+          >
+            Continue
+          </Text>
+        </TouchableOpacity>
       ) : (
-        <Text
-          style={{
-            textAlign: 'center',
-            fontFamily: 'outfit-medium',
-            fontSize: 15,
-            color: Colors.WHITE,
-          }}
-        >
-          Enroll to Course
-        </Text>
+        <TouchableOpacity onPress={() => onEnrollmentPress()}>
+          <Text
+            style={{
+              textAlign: 'center',
+              fontFamily: 'outfit-medium',
+              fontSize: 15,
+              color: Colors.WHITE,
+            }}
+          >
+            Enroll to Course
+          </Text>
+        </TouchableOpacity>
       )}
     </View>
   );

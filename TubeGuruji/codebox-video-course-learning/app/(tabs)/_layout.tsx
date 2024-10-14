@@ -55,17 +55,6 @@ export default function TabNavigation() {
           ),
         }}
       />
-
-      <Tab.Screen
-        name='CourseDetailScreen'
-        component={CourseDetailScreen}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name='mail' size={24} color={color} />
-          ),
-          tabBarLabel: ({ color }) => <Text style={{ color: color }}>o</Text>,
-        }}
-      />
     </Tab.Navigator>
   );
 }
