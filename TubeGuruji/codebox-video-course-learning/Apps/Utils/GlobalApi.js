@@ -111,9 +111,28 @@ const saveUserCouseEnrollment = async (slug, email) => {
   return result;
 };
 
+// Check Membership
+const checkUserMembership = async () => {
+  const query =
+    gql`
+    query myQuery {
+    memberships(where: {email: "` +
+    email +
+    `",active: true}) {
+      id
+      createdAt
+      email
+      }
+    }
+    `;
+  const result = await request(MASTER_URL, query);
+  return result;
+};
+
 export default {
   getCategory,
   getCourseList,
   checkUserCourseEnrollment,
   saveUserCouseEnrollment,
+  checkUserMembership,
 };

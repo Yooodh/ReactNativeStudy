@@ -8,6 +8,7 @@ import { Ionicons } from '@expo/vector-icons';
 import Colors from '@/Apps/Utils/Colors';
 import HomeNavigation from '@/Apps/Navigations/HomeNavigation';
 import CourseDetailScreen from '@/Apps/Screens/CourseDetailScreen';
+import MembershipModal from '@/Apps/Screens/MembershipModal';
 
 const Tab = createBottomTabNavigator();
 
@@ -53,6 +54,17 @@ export default function TabNavigation() {
           tabBarLabel: ({ color }) => (
             <Text style={{ color: color }}>Profile</Text>
           ),
+        }}
+      />
+
+      <Tab.Screen
+        name='MembershipModal'
+        component={MembershipModal}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name='home-outline' size={24} color={color} />
+          ),
+          tabBarLabel: ({ color }) => <Text style={{ color: color }}>o</Text>,
         }}
       />
     </Tab.Navigator>

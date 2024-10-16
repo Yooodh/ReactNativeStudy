@@ -8,7 +8,7 @@ import CourseIntro from '../Components/CourseIntro';
 import SourceSection from '../Components/SourceSection';
 import EnrollmentSection from '../Components/EnrollmentSection';
 import LessionSection from '../Components/LessionSection';
-import { UserDetailContext } from '@/App';
+import { MembershipContext, UserDetailContext } from '@/App';
 import GlobalApi from '../Utils/GlobalApi';
 
 export default function CourseDetailScreen() {
@@ -17,6 +17,7 @@ export default function CourseDetailScreen() {
   const { userDetail, setUserDetail } = useContext(UserDetailContext);
   const navigation = useNavigation();
   const [userEnrollment, setUserEnrollment] = useState();
+  const { isMemeber, setIsMember } = useContext(MembershipContext);
 
   useEffect(() => {
     setCourse(params.course);
@@ -37,25 +38,34 @@ export default function CourseDetailScreen() {
 
   const onEnrollmentPress = () => {
     if (course?.free) {
-      GlobalApi.saveUserCouseEnrollment(course.slug, userDetail.email).then(
-        (resp) => {
-          console.log(resp);
-          if (resp) {
-            Alert.alert('Great!!!', 'You just enrolled to new course.', [
-              {
-                test: 'Ok',
-                onPress: () => console.log('Ok Press'),
-                style: 'cancel',
-              },
-            ]);
-            checkIsUserEnrollToCourse();
-          }
-        }
-      );
+      saveUserEnrollment();
     } else {
       console.log('Need membership');
+      if (!isMemeber) {
+        navigation.navigate('membership');
+        return;
+      }
+      saveUserEnrollment();
       //check is Member
     }
+  };
+
+  const saveUserEnrollment = () => {
+    GlobalApi.saveUserCouseEnrollment(course.slug, userDetail.email).then(
+      (resp) => {
+        console.log(resp);
+        if (resp) {
+          Alert.alert('Great!!!', 'You just enrolled to new course.', [
+            {
+              test: 'Ok',
+              onPress: () => console.log('Ok Press'),
+              style: 'cancel',
+            },
+          ]);
+          checkIsUserEnrollToCourse();
+        }
+      }
+    );
   };
 
   return (
