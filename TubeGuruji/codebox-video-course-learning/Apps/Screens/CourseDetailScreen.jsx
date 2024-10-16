@@ -21,19 +21,18 @@ export default function CourseDetailScreen() {
 
   useEffect(() => {
     setCourse(params.course);
-    params && checkIsUserEnrollToCourse();
+    params && userDetail && checkIsUserEnrollToCourse(params.course);
   }, [params && userDetail]);
 
-  useEffect;
-
-  const checkIsUserEnrollToCourse = () => {
+  const checkIsUserEnrollToCourse = (course) => {
     // email slug
-    GlobalApi.checkUserCourseEnrollment(course?.slug, userDetail.email).then(
-      (resp) => {
-        console.log('--', resp);
-        setUserEnrollment(resp.userEnrollCourses);
-      }
-    );
+    course &&
+      GlobalApi.checkUserCourseEnrollment(course?.slug, userDetail.email).then(
+        (resp) => {
+          console.log('--', resp);
+          setUserEnrollment(resp.userEnrollCourses);
+        }
+      );
   };
 
   const onEnrollmentPress = () => {
@@ -62,7 +61,7 @@ export default function CourseDetailScreen() {
               style: 'cancel',
             },
           ]);
-          checkIsUserEnrollToCourse();
+          checkIsUserEnrollToCourse(course);
         }
       }
     );

@@ -1,4 +1,5 @@
 import {
+  Alert,
   Image,
   ScrollView,
   StyleSheet,
@@ -6,13 +7,32 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Colors from '../Utils/Colors';
 import { useNavigation } from 'expo-router';
+import GlobalApi from '../Utils/GlobalApi';
+import { MembershipContext, UserDetailContext } from '@/App';
 
 export default function MembershipModal() {
   const [selectedMembership, setSelectedMembership] = useState();
   const navigation = useNavigation();
+  const { userDetail, setUserDetail } = useContext(UserDetailContext);
+  const { isMember, setIsMember } = useContext(MembershipContext);
+
+  const saveNewMembership = () => {
+    GlobalApi.createNewMembership(userDetail.email).then((resp) => {
+      if (resp) {
+        setIsMember(true);
+        Alert.alert('Great!!!', 'Thank you for joining membership', [
+          {
+            test: 'Ok',
+            onPress: () => navigation.goBack(),
+            style: 'cancel',
+          },
+        ]);
+      }
+    });
+  };
   return (
     <ScrollView style={{}}>
       <View>
@@ -132,7 +152,7 @@ export default function MembershipModal() {
           </TouchableOpacity>
         </View>
         <TouchableOpacity
-          onPress={() => saveNewMembership()}
+          onPress={() => selectedMembership && saveNewMembership()}
           style={{
             padding: 20,
             backgroundColor: Colors.PRIMARY,

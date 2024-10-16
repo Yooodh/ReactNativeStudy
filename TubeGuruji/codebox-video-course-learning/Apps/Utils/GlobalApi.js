@@ -129,10 +129,29 @@ const checkUserMembership = async () => {
   return result;
 };
 
+const createNewMembership = async (email) => {
+  const query =
+    gql`
+  mutation MyMutation {
+  createMembership(data: {active: true, email:"` +
+    email +
+    `",paymentId:"12345"}){
+      id
+    }
+    publishManyMemberships {
+      count
+    }
+  }
+  `;
+  const result = await request(MASTER_URL, query);
+  return result;
+};
+
 export default {
   getCategory,
   getCourseList,
   checkUserCourseEnrollment,
   saveUserCouseEnrollment,
   checkUserMembership,
+  createNewMembership,
 };

@@ -1,14 +1,18 @@
 import { View, Text, Image, TouchableOpacity, Linking } from 'react-native';
 import React, { useState } from 'react';
 import Colors from '../Utils/Colors';
+import { useNavigation } from 'expo-router';
 
 export default function SourceSection({ course, userEnrollment }) {
   const [isMember, setIsMember] = useState(false);
+  const navigation = useNavigation();
 
   const onSourceClick = (url) => {
     // console.log(url);
     if (isMember) {
       Linking.openURL(url);
+    } else {
+      navigation.navigate('membership');
     }
   };
 
