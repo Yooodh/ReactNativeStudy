@@ -6,9 +6,7 @@ import ProfileScreen from '@/Apps/Screens/ProfileScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '@/Apps/Utils/Colors';
-import HomeNavigation from '@/Apps/Navigations/HomeNavigation';
-import CourseDetailScreen from '@/Apps/Screens/CourseDetailScreen';
-import MembershipModal from '@/Apps/Screens/MembershipModal';
+import WatchLessons from './../../Apps/Screens/WatchLessons';
 
 const Tab = createBottomTabNavigator();
 
@@ -58,13 +56,15 @@ export default function TabNavigation() {
       />
 
       <Tab.Screen
-        name='MembershipModal'
-        component={MembershipModal}
+        name='WatchLessons'
+        component={WatchLessons}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name='home-outline' size={24} color={color} />
+            <Ionicons name='hammer' size={24} color={color} />
           ),
-          tabBarLabel: ({ color }) => <Text style={{ color: color }}>o</Text>,
+          tabBarLabel: ({ color }) => (
+            <Text style={{ color: color }}>Temporarily</Text>
+          ),
         }}
       />
     </Tab.Navigator>

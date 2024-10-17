@@ -5,6 +5,7 @@ import Colors from '../Utils/Colors';
 export default function EnrollmentSection({
   userEnrollment,
   onEnrollmentPress,
+  onContinuePress,
 }) {
   // const [isEnrolled, setIsEnrolled] = useState(false);
   useEffect(() => {
@@ -20,7 +21,7 @@ export default function EnrollmentSection({
       }}
     >
       {userEnrollment?.length > 0 ? (
-        <TouchableOpacity onPress={() => console.log('Continue')}>
+        <TouchableOpacity onPress={() => onContinuePress()}>
           <Text
             style={{
               textAlign: 'center',

@@ -96,6 +96,12 @@ export default function CourseDetailScreen() {
       <EnrollmentSection
         userEnrollment={userEnrollment}
         onEnrollmentPress={() => onEnrollmentPress()}
+        onContinuePress={() =>
+          navigation.navigate('watch-lesson', {
+            course: course,
+            userEnrollment: userEnrollment,
+          })
+        }
       />
 
       {/* Lession Section */}

@@ -5,6 +5,7 @@ import HomeScreen from '../Screens/HomeScreen';
 import CourseDetailScreen from '../Screens/CourseDetailScreen';
 import TabNavigation from '@/app/(tabs)/_layout';
 import MembershipModal from '../Screens/MembershipModal';
+import WatchLessons from '../Screens/WatchLessons';
 
 const Stack = createStackNavigator();
 export default function HomeNavigation() {
@@ -19,6 +20,7 @@ export default function HomeNavigation() {
           presentation: 'modal',
         }}
       />
+      <Stack.Screen name='watch-lesson' component={WatchLessons} />
     </Stack.Navigator>
   );
 }
