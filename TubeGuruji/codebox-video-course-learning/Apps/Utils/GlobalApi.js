@@ -147,6 +147,28 @@ const createNewMembership = async (email) => {
   return result;
 };
 
+const markChapterCompleted = async (recordId, chapterId) => {
+  const query =
+    gql`
+  mutation MyMutation {
+  updateUserEnrollCourse(
+  data: {completedChapter: {create: {CompletedChapter: {data: {chapterId: "` +
+    chapterId +
+    `"}}}}}
+    where: {id: "` +
+    recordId +
+    `"}
+    )
+    {
+      id
+    }
+    publishManyUserEnrollCourses {
+      count
+    }
+  }
+  `;
+};
+
 export default {
   getCategory,
   getCourseList,
@@ -154,4 +176,5 @@ export default {
   saveUserCouseEnrollment,
   checkUserMembership,
   createNewMembership,
+  markChapterCompleted,
 };

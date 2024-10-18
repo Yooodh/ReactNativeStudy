@@ -1,28 +1,38 @@
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
 import React, { useState } from 'react';
 import SectionHeading from './SectionHeading';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '../Utils/Colors';
 
-export default function LessionSection({ course, userEnrollment }) {
+export default function LessionSection({
+  course,
+  userEnrollment,
+  onChapterSelect,
+  selectedChapter = {},
+}) {
+  // export default function LessionSection() {
   // const [isEnrolled, setIsEnrolled] = useState(false);
   return (
     <View>
       <SectionHeading heading={'Lessions'} />
       <FlatList
         data={course?.chapter}
+        showsVerticalScrollIndicator={false}
         renderItem={({ item, index }) => (
           <TouchableOpacity
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              padding: 15,
-              borderWidth: 0.5,
-              marginBottom: 10,
-              borderRadius: 10,
-            }}
+            onPress={() => onChapterSelect(item)}
+            style={[
+              styles.container,
+              selectedChapter == item && {
+                backgroundColor: Colors.PRIMARY_LIGHT,
+              },
+            ]}
           >
             <View
               style={{
@@ -52,7 +62,7 @@ export default function LessionSection({ course, userEnrollment }) {
               </Text>
             </View>
 
-            {userEnrollment?.length > 0 || index == 0 ? (
+            {userEnrollment != [] || index == 0 ? (
               <Ionicons name='play-circle' size={34} color={Colors.PRIMARY} />
             ) : (
               <Ionicons name='lock-closed' size={28} color={Colors.PRIMARY} />
@@ -64,3 +74,17 @@ export default function LessionSection({ course, userEnrollment }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: Colors.WHITE,
+    padding: 15,
+    borderWidth: 0.5,
+    marginBottom: 10,
+    borderRadius: 10,
+  },
+});
