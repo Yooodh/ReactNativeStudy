@@ -18,6 +18,16 @@ export default function LessionSection({
 }) {
   // export default function LessionSection() {
   // const [isEnrolled, setIsEnrolled] = useState(false);
+  console.log('userEnrollment', userEnrollment);
+  const checkIsChapterCompleted = (chapterId) => {
+    const result =
+      userEnrollment &&
+      userEnrollment[0].completedChapter.find(
+        (item) => item.chapterId == chapterId
+      );
+    console.log(result);
+    return result;
+  };
   return (
     <View>
       <SectionHeading heading={'Lessions'} />
@@ -32,6 +42,9 @@ export default function LessionSection({
               selectedChapter == item && {
                 backgroundColor: Colors.PRIMARY_LIGHT,
               },
+              checkIsChapterCompleted(item.id) && {
+                backgroundColor: Colors.LIGHT_GREEN,
+              },
             ]}
           >
             <View
@@ -43,17 +56,23 @@ export default function LessionSection({
               }}
             >
               <Text
-                style={{
-                  fontSize: 17,
-                  fontFamily: 'outfit',
-                  padding: 10,
-                  backgroundColor: Colors.PRIMARY_LIGHT,
-                  borderRadius: 99,
-                  width: 40,
-                  height: 40,
-                  textAlign: 'center',
-                  color: Colors.PRIMARY,
-                }}
+                style={[
+                  {
+                    fontSize: 17,
+                    fontFamily: 'outfit',
+                    padding: 10,
+                    backgroundColor: Colors.PRIMARY_LIGHT,
+                    borderRadius: 99,
+                    width: 40,
+                    height: 40,
+                    textAlign: 'center',
+                    color: Colors.PRIMARY,
+                  },
+                  checkIsChapterCompleted(item.id) && {
+                    color: Colors.GREEN,
+                    backgroundColor: Colors.LIGHT_GREEN,
+                  },
+                ]}
               >
                 {index + 1}
               </Text>
@@ -62,7 +81,13 @@ export default function LessionSection({
               </Text>
             </View>
 
-            {userEnrollment != [] || index == 0 ? (
+            {checkIsChapterCompleted(item.id) ? (
+              <Ionicons
+                name='checkmark-circle'
+                size={28}
+                color={Colors.GREEN}
+              />
+            ) : userEnrollment != [] || index == 0 ? (
               <Ionicons name='play-circle' size={34} color={Colors.PRIMARY} />
             ) : (
               <Ionicons name='lock-closed' size={28} color={Colors.PRIMARY} />

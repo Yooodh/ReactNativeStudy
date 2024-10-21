@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useRoute } from '@react-navigation/native';
 import { Video, ResizeMode } from 'expo-av';
 import Colors from '../Utils/Colors';
@@ -14,27 +14,33 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from 'expo-router';
 import LessionSection from '../Components/LessionSection';
 import GlobalApi from '../Utils/GlobalApi';
+import { ReloadMethodsContext } from '@/App';
 
 export default function WatchLessons() {
   const { params } = useRoute();
   const [userEnrollment, setUserEnrollment] = useState([
-    params?.userEnrollment[0],
+    params?.userEnrollment,
   ]);
   // const [course, setCourse] = useState(params?.course);
   const [selectedChapter, setSelectedChapter] = useState();
+  const { reload, setRoload } = useContext(ReloadMethodsContext);
   const navigation = useNavigation();
 
   useEffect(() => {
     console.log('---', userEnrollment);
     params && setSelectedChapter(params?.course?.chapter[0]);
+    params && setUserEnrollment(params?.userEnrollment);
   }, [params && userEnrollment]);
 
   const onChapterCompleted = () => {
-    GlobalApi.markChapterCompleted(userEnrollment.id, selectedChapter.id).then(
-      (resp) => {
-        ToastAndroid.show('Chapter Mark Completed!', ToastAndroid.SHORT);
-      }
-    );
+    GlobalApi.markChapterCompleted(
+      userEnrollment[0]?.id,
+      selectedChapter.id
+    ).then((resp) => {
+      console.log('--', resp);
+      setRoload('Update Enrollment');
+      ToastAndroid.show('Chapter Mark Completed!', ToastAndroid.SHORT);
+    });
   };
 
   // return (

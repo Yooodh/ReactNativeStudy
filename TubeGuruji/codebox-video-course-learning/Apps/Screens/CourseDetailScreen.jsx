@@ -8,12 +8,17 @@ import CourseIntro from '../Components/CourseIntro';
 import SourceSection from '../Components/SourceSection';
 import EnrollmentSection from '../Components/EnrollmentSection';
 import LessionSection from '../Components/LessionSection';
-import { MembershipContext, UserDetailContext } from '@/App';
+import {
+  MembershipContext,
+  ReloadMethodsContext,
+  UserDetailContext,
+} from '@/App';
 import GlobalApi from '../Utils/GlobalApi';
 
 export default function CourseDetailScreen() {
   const { params } = useRoute();
   const [course, setCourse] = useState();
+  const { reload, setRoload } = useContext(ReloadMethodsContext);
   const { userDetail, setUserDetail } = useContext(UserDetailContext);
   const navigation = useNavigation();
   const [userEnrollment, setUserEnrollment] = useState();
@@ -24,12 +29,15 @@ export default function CourseDetailScreen() {
     params && userDetail && checkIsUserEnrollToCourse(params.course);
   }, [params && userDetail]);
 
+  useEffect(() => {
+    reload && checkIsUserEnrollToCourse();
+  }, [reload]);
+
   const checkIsUserEnrollToCourse = (course) => {
     // email slug
     course &&
       GlobalApi.checkUserCourseEnrollment(course?.slug, userDetail.email).then(
         (resp) => {
-          console.log('--', resp);
           setUserEnrollment(resp.userEnrollCourses);
         }
       );

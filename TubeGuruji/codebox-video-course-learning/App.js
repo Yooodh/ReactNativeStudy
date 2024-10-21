@@ -11,9 +11,11 @@ import GlobalApi from './Apps/Utils/GlobalApi';
 export const AuthContext = createContext();
 export const UserDetailContext = createContext();
 export const MembershipContext = createContext();
+export const ReloadMethodsContext = createContext();
 export default function App() {
   const [userDetail, setUserDetail] = useState();
   const [isMember, setIsMember] = useState();
+  const [reload, setRoload] = useState();
   const [fontsLoded, fontError] = useFonts({
     outfit: require('./assets/fonts/Outfit-Regular.ttf'),
     'outfit-medium': require('./assets/fonts/Outfit-Medium.ttf'),
@@ -53,9 +55,11 @@ export default function App() {
       <AuthContext.Provider value={{ auth, setAuth }}>
         <UserDetailContext.Provider value={{ userDetail, setUserDetail }}>
           <MembershipContext.Provider value={{ isMember, setIsMember }}>
-            <NavigationContainer>
-              {auth ? <HomeNavigation /> : <LoginScreen />}
-            </NavigationContainer>
+            <ReloadMethodsContext.Provider value={{ reload, setRoload }}>
+              <NavigationContainer>
+                {auth ? <HomeNavigation /> : <LoginScreen />}
+              </NavigationContainer>
+            </ReloadMethodsContext.Provider>
           </MembershipContext.Provider>
         </UserDetailContext.Provider>
       </AuthContext.Provider>
