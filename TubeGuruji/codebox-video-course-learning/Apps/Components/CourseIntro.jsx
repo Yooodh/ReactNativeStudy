@@ -9,16 +9,28 @@ export default function CourseIntro({ course }) {
   return (
     course && (
       <View style={{}}>
-        <Video
-          style={styles.video}
-          source={{
-            // uri: 'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
-            uri: course?.chapter[0]?.video?.url,
-          }}
-          useNativeControls={true}
-          resizeMode={ResizeMode.CONTAIN}
-          isLooping
-        />
+        {course?.chapter[0] ? (
+          <Video
+            style={styles.video}
+            source={{
+              // uri: 'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
+              uri: course?.chapter[0]?.video?.url,
+            }}
+            useNativeControls={true}
+            resizeMode={ResizeMode.CONTAIN}
+            isLooping
+          />
+        ) : (
+          <Image
+            source={{ uri: course?.banner?.url }}
+            style={{
+              width: '100%',
+              height: 200,
+              borderRadius: 10,
+              marginTop: 10,
+            }}
+          />
+        )}
         <View
           style={{
             display: 'flex',

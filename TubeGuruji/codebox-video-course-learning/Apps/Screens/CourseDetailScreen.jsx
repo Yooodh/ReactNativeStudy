@@ -103,6 +103,7 @@ export default function CourseDetailScreen() {
       {/* Enroll Section */}
       <EnrollmentSection
         userEnrollment={userEnrollment}
+        course={course}
         onEnrollmentPress={() => onEnrollmentPress()}
         onContinuePress={() =>
           navigation.navigate('watch-lesson', {
@@ -113,7 +114,9 @@ export default function CourseDetailScreen() {
       />
 
       {/* Lession Section */}
-      <LessionSection course={course} userEnrollment={userEnrollment} />
+      {course?.chapter[0] && (
+        <LessionSection course={course} userEnrollment={userEnrollment} />
+      )}
     </ScrollView>
   );
 }
