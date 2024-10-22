@@ -1,14 +1,40 @@
-import { View, Text } from 'react-native';
-import React from 'react';
+import { View, Text, FlatList } from 'react-native';
+import React, { useContext, useEffect, useState } from 'react';
+import { UserDetailContext } from '@/App';
+import GlobalApi from '../Utils/GlobalApi';
+import CourseItem from '../Components/CourseItem';
 
-type Props = {};
+export default function MyCourseScreen() {
+  const { userDetail, setUserDetail } = useContext(UserDetailContext);
+  const [enrolledCoursesList, setEnrolledCoursesList] = useState();
 
-const MyCourseScreen = (props: Props) => {
+  useEffect(() => {
+    userDetail && getAllUserEnrollCourses();
+  }, [userDetail]);
+
+  const getAllUserEnrollCourses = () => {
+    GlobalApi.getAllUserEnrollCourses(userDetail.email).then((resp) => {
+      setEnrolledCoursesList(resp.UserEnrollCourses);
+    });
+  };
   return (
-    <View>
-      <Text>MyCourseScreen</Text>
+    <View style={{ padding: 20, marginTop: 25 }}>
+      <Text
+        style={{
+          fontFamily: 'outfit-bold',
+          fontSize: 27,
+        }}
+      >
+        My Course
+      </Text>
+
+      {/* List of Course Enrollment */}
+      <FlatList
+        data={enrolledCoursesList}
+        renderItem={({ item, index }) => (
+          <CourseItem course={item.courseList} />
+        )}
+      />
     </View>
   );
-};
-
-export default MyCourseScreen;
+}

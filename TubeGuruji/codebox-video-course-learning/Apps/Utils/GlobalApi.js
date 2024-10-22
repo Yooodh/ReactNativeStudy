@@ -166,7 +166,55 @@ const markChapterCompleted = async (recordId, chapterId) => {
       count
     }
   }
+    
   `;
+  const result = await request(MASTER_URL, query);
+  return result;
+};
+
+const getAllUserEnrollCourses = async (email) => {
+  const query =
+    gql`
+      query MyQuery {
+      userEnrollCourses(where: {userEmail:"` +
+    email +
+    `"}){
+      completedChapter {
+        ... on CompletedChapter {
+          id
+          chapterId
+        }
+      }
+      courseId
+      courseList {
+      author
+      banner {
+        url
+      }
+      chapter {
+        ... on Chapter {
+          id
+          name
+          video {
+            url
+          }
+        }
+      }
+      demoUrl
+      description
+      free
+      id
+      name
+      slug
+      sourceCode
+      totalChapters
+      tag
+      }
+    }
+  }
+  `;
+  const result = await request(MASTER_URL, query);
+  return result;
 };
 
 export default {
@@ -177,4 +225,5 @@ export default {
   checkUserMembership,
   createNewMembership,
   markChapterCompleted,
+  getAllUserEnrollCourses,
 };

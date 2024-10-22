@@ -54,7 +54,7 @@ export default function TabNavigation() {
           ),
         }}
       />
-
+      {/* 
       <Tab.Screen
         name='WatchLessons'
         component={WatchLessons}
@@ -66,7 +66,7 @@ export default function TabNavigation() {
             <Text style={{ color: color }}>Temporarily</Text>
           ),
         }}
-      />
+      /> */}
     </Tab.Navigator>
   );
 }
