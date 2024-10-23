@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { UserDetailContext } from '@/App';
 import GlobalApi from '../Utils/GlobalApi';
 import CourseItem from '../Components/CourseItem';
+import ProgressCourseItem from '../Components/ProgressCourseItem';
 
 export default function MyCourseScreen() {
   const { userDetail, setUserDetail } = useContext(UserDetailContext);
@@ -32,7 +33,12 @@ export default function MyCourseScreen() {
       <FlatList
         data={enrolledCoursesList}
         renderItem={({ item, index }) => (
-          <CourseItem course={item.courseList} />
+          <View>
+            <ProgressCourseItem
+              completedChapter={item?.completedChapter?.length}
+              course={item.courseList}
+            />
+          </View>
         )}
       />
     </View>
