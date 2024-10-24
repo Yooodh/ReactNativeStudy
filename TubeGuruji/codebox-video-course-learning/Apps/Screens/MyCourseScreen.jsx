@@ -8,14 +8,17 @@ import ProgressCourseItem from '../Components/ProgressCourseItem';
 export default function MyCourseScreen() {
   const { userDetail, setUserDetail } = useContext(UserDetailContext);
   const [enrolledCoursesList, setEnrolledCoursesList] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     userDetail && getAllUserEnrollCourses();
   }, [userDetail]);
 
   const getAllUserEnrollCourses = () => {
+    setIsLoading(true);
     GlobalApi.getAllUserEnrollCourses(userDetail.email).then((resp) => {
       setEnrolledCoursesList(resp.UserEnrollCourses);
+      setIsLoading(false);
     });
   };
   return (
@@ -32,6 +35,9 @@ export default function MyCourseScreen() {
       {/* List of Course Enrollment */}
       <FlatList
         data={enrolledCoursesList}
+        refreshing={isLoading}
+        showsVerticalScrollIndicator={false}
+        onRefresh={() => getAllUserEnrollCourses()}
         renderItem={({ item, index }) => (
           <View>
             <ProgressCourseItem

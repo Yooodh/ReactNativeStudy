@@ -72,8 +72,8 @@ export default function ProgressCourseItem({ course, completedChapter }) {
               }}
             >
               <Ionicons name='book' size={20} color={Colors.PRIMARY} />
-              <Text style={{ color: Colors.GRAY, fontFamily: 'outfit' }}>
-                {course.chapter?.length} Chapters
+              <Text style={{ fontFamily: 'outfit' }}>
+                {calculatePercCompleted() * 100}%
               </Text>
             </View>
           ) : (
@@ -91,8 +91,8 @@ export default function ProgressCourseItem({ course, completedChapter }) {
               </Text>
             </View>
           )}
-          <Text style={{ fontFamily: 'outfit-bold', color: Colors.PRIMARY }}>
-            {course.free ? 'Free' : 'Paid'}
+          <Text style={{ fontFamily: 'outfit-bold' }}>
+            {completedChapter}/{course?.chapter?.length}
           </Text>
         </View>
         <ProgressBar perc={calculatePercCompleted()} />

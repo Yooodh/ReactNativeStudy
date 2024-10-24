@@ -6,13 +6,15 @@ export default function ProgressBar({ perc }) {
   const screenWidth = Dimensions.get('screen').width * 0.8;
   const progressWidth = screenWidth * perc;
   return (
-    <View
-      style={{
-        height: 7,
-        backgroundColor: Colors.PRIMARY,
-        borderRadius: 99,
-        width: progressWidth,
-      }}
-    ></View>
+    <View style={{ backgroundColor: Colors.LIGHT_GRAY }}>
+      <View
+        style={{
+          height: 7,
+          backgroundColor: Colors.PRIMARY,
+          borderRadius: 99,
+          width: progressWidth,
+        }}
+      ></View>
+    </View>
   );
 }
