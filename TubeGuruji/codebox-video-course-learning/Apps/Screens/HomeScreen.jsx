@@ -10,9 +10,10 @@ import CourseList from '../Components/CourseList';
 import courseListVertical from '../Components/CourseListVertical';
 
 export default function HomeScreen() {
-  // const { auth, setAuth } = useContext(AuthContext);
+  const { auth, setAuth } = useContext(AuthContext);
   const [categories, setCategories] = useState();
   const [courseList, setCourseList] = useState([]);
+  const [orgCourseList, setOrgCourseList] = useState([]);
 
   useEffect(() => {
     getCategory();
@@ -37,6 +38,7 @@ export default function HomeScreen() {
   const getCourseList = () => {
     GlobalApi.getCourseList().then((resp) => {
       setCourseList(resp?.courseLists);
+      setOrgCourseList(resp?.courseLists);
     });
   };
 
@@ -44,11 +46,19 @@ export default function HomeScreen() {
     const result = courseList.filter((item) => item.tag.includes(tag));
     return result;
   };
+
+  const filterCourseList = (category) => {
+    const result = orgCourseList.filter((item) => item.tag.includes(category));
+    setCourseList(result);
+  };
   return (
     <ScrollView style={{ padding: 20, marginTop: 25 }}>
       <Header />
       {/* Category List */}
-      <CategoryList categories={categories} />
+      <CategoryList
+        categories={categories}
+        setSelectedCategory={(category) => filterCourseList(category)}
+      />
 
       {/* All Course List */}
       <SectionHeading heading={'Latest Courses'} />

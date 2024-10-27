@@ -9,13 +9,13 @@ import React, { useState } from 'react';
 import Colors from '../Utils/Colors';
 import SectionHeading from './SectionHeading';
 
-export default function CategoryList({ categoryList }) {
+export default function CategoryList({ categories, setSelectedCategory }) {
   const [activeIndex, setActiveIndex] = useState();
   return (
     <View style={{ marginTop: 20 }}>
       <SectionHeading heading={'Category'} />
       <FlatList
-        data={categoryList}
+        data={categories}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         renderItem={({ item, index }) => (
@@ -29,6 +29,7 @@ export default function CategoryList({ categoryList }) {
             ]}
             onPress={() => {
               setActiveIndex(index);
+              setSelectedCategory(item.slug);
             }}
           >
             <Image
