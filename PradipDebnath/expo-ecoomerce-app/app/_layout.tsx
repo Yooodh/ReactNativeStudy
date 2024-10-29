@@ -23,10 +23,10 @@ export default function RootLayout() {
   }
 
   return (
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="signin" options={{ presentation: 'modal' }} />
-        <Stack.Screen name="signup" options={{ presentation: 'modal' }} />
-      </Stack>
+    <Stack>
+      <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
+      <Stack.Screen name='signin' options={{ presentation: 'modal' }} />
+      <Stack.Screen name='signup' options={{ presentation: 'modal' }} />
+    </Stack>
   );
 }
