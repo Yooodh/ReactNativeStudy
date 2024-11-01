@@ -1,4 +1,5 @@
 import {
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -10,12 +11,13 @@ import { Link, router, Stack } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '@/constants/Colors';
 import InputField from '@/components/InputField';
+import SocialLoginButtons from '@/components/SocialLoginButtons';
 
 type Props = {};
 
 const SignUpScreen = (props: Props) => {
   return (
-    <>
+    <ScrollView>
       <Stack.Screen
         options={{
           headerTitle: 'Sign Up',
@@ -61,8 +63,12 @@ const SignUpScreen = (props: Props) => {
             </TouchableOpacity>
           </Link>
         </Text>
+
+        <View style={styles.divider} />
+
+        <SocialLoginButtons emailHref={'/signin'} />
       </View>
-    </>
+    </ScrollView>
   );
 };
 
@@ -98,7 +104,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   loginTxt: {
-    marginTop: 30,
+    marginBottom: 30,
     fontSize: 14,
     color: Colors.black,
     lineHeight: 24,
@@ -106,5 +112,11 @@ const styles = StyleSheet.create({
   loginTxtSpan: {
     color: Colors.primary,
     fontWeight: '600',
+  },
+  divider: {
+    borderTopColor: Colors.gray,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    width: '30%',
+    marginBottom: 30,
   },
 });
