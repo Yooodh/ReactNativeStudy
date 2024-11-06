@@ -1,9 +1,10 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ProductType } from '@/types/type';
 import { Stack } from 'expo-router';
 import Header from '@/components/Header';
+import ProductItem from '@/components/ProductItem';
 
 type Props = {};
 
@@ -24,7 +25,7 @@ const HomeScreen = (props: Props) => {
 
     const response = await axios.get(URL);
 
-    console.log(response.data);
+    // console.log(response.data);
     setProducts(response.data);
     setIsLoading(false);
   };
@@ -41,8 +42,13 @@ const HomeScreen = (props: Props) => {
         <Text>Home Screen</Text>
         <FlatList
           data={products}
+          numColumns={2}
+          columnWrapperStyle={{
+            justifyContent: 'space-between',
+            marginBottom: 20,
+          }}
           keyExtractor={(item) => item.id.toString()}
-          renderItem={({ index, item }) => <Text>{item.title}</Text>}
+          renderItem={({ index, item }) => <ProductItem item={item} />}
         />
       </View>
     </>
@@ -53,6 +59,6 @@ export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    marginHorizontal: 20,
   },
 });
