@@ -10,16 +10,21 @@ import React from 'react';
 import { ProductType } from '@/types/type';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '@/constants/Colors';
+import Animated, { FadeInDown } from 'react-native-reanimated';
 
 type Props = {
   item: ProductType;
+  index: number;
 };
 
 const width = Dimensions.get('window').width - 40;
 
-const ProductItem = ({ item }: Props) => {
+const ProductItem = ({ item, index }: Props) => {
   return (
-    <View style={styles.container}>
+    <Animated.View
+      style={styles.container}
+      entering={FadeInDown.delay(300 + index * 100).duration(500)}
+    >
       <Image source={{ uri: item.images[0] }} style={styles.productImg} />
       <TouchableOpacity style={styles.bookmarkBtn}>
         <Ionicons name='heart-outline' size={22} color={Colors.black} />
@@ -32,7 +37,7 @@ const ProductItem = ({ item }: Props) => {
         </View>
       </View>
       <Text style={styles.title}>{item.title}</Text>
-    </View>
+    </Animated.View>
   );
 };
 
