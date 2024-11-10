@@ -15,6 +15,7 @@ import ProductItem from '@/components/ProductItem';
 import { Colors } from '@/constants/Colors';
 import ProductList from '@/components/ProductList';
 import Categories from '@/components/Categories';
+import FlachSale from '@/components/FlachSale';
 
 type Props = {};
 
@@ -65,6 +66,7 @@ const HomeScreen = (props: Props) => {
         }}
       />
       <Categories categories={categories} />
+      <FlachSale />
       <ProductList products={products} />
     </>
   );

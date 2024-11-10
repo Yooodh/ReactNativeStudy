@@ -14,7 +14,7 @@ type Props = { categories: CategoryType[] };
 
 const Categories = ({ categories }: Props) => {
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.titlewrapper}>
         <Text style={styles.title}>Categories</Text>
         <TouchableOpacity>
@@ -42,10 +42,12 @@ const Categories = ({ categories }: Props) => {
 export default Categories;
 
 const styles = StyleSheet.create({
+  container: {
+    marginBottom: 20,
+  },
   titlewrapper: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 10,
     marginHorizontal: 20,
   },
   title: {
