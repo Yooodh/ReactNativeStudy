@@ -1,6 +1,8 @@
 import {
+  ActivityIndicator,
   FlatList,
   Image,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -21,12 +23,14 @@ type Props = {};
 
 const HomeScreen = (props: Props) => {
   const [products, setProducts] = useState<ProductType[]>([]);
+  const [saleProducts, setsaleProducts] = useState<ProductType[]>([]);
   const [categories, setCategories] = useState<CategoryType[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     getCategories();
     getProducts();
+    getSaleProducts();
   }, []);
 
   const getProducts = async () => {
@@ -57,6 +61,28 @@ const HomeScreen = (props: Props) => {
     setIsLoading(false);
   };
 
+  const getSaleProducts = async () => {
+    // const URL = `http://localhost:8000/products`;
+    // const URL = `http://10.0.2.2:8000/products`;
+
+    // ADD
+    const URL = `http://192.168.45.155:8000/saleProducts`;
+
+    const response = await axios.get(URL);
+
+    // console.log(response.data);
+    setsaleProducts(response.data);
+    setIsLoading(false);
+  };
+
+  if (isLoading) {
+    return (
+      <View>
+        <ActivityIndicator size={'large'} />
+      </View>
+    );
+  }
+
   return (
     <>
       <Stack.Screen
@@ -65,9 +91,17 @@ const HomeScreen = (props: Props) => {
           header: () => <Header />,
         }}
       />
-      <Categories categories={categories} />
-      <FlachSale />
-      <ProductList products={products} />
+      <ScrollView>
+        <Categories categories={categories} />
+        <FlachSale products={saleProducts} />
+        <View style={{ marginHorizontal: 20, marginBottom: 10 }}>
+          <Image
+            source={require('@/assets/images/sale-banner.jpg')}
+            style={{ width: '100%', height: 150, borderRadius: 15 }}
+          />
+        </View>
+        <ProductList products={products} />
+      </ScrollView>
     </>
   );
 };

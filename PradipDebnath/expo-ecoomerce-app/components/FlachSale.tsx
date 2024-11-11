@@ -1,12 +1,24 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { Colors } from '@/constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
+import { ProductType } from '@/types/type';
+import ProductItem from './ProductItem';
 
-type Props = {};
+type Props = {
+  products: ProductType[];
+};
 
-const FlachSale = (props: Props) => {
+const FlachSale = ({ products }: Props) => {
   const saleEndDate = new Date();
+  // saleEndDate.setFullYear(2024, 9, 2);
   saleEndDate.setDate(saleEndDate.getDate() + 2);
   saleEndDate.setHours(23, 59, 59);
 
@@ -70,6 +82,18 @@ const FlachSale = (props: Props) => {
           <Text style={styles.titleBtn}>See All</Text>
         </TouchableOpacity>
       </View>
+      <FlatList
+        data={products}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{ marginLeft: 20, paddingRight: 20 }}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item, index }) => (
+          <View style={{ marginRight: 20 }}>
+            <ProductItem index={index} item={item} />
+          </View>
+        )}
+      />
     </View>
   );
 };
@@ -84,6 +108,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginHorizontal: 20,
+    marginBottom: 20,
   },
   title: {
     fontSize: 18,
