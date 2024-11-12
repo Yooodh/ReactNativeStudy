@@ -100,7 +100,7 @@ const HomeScreen = (props: Props) => {
             style={{ width: '100%', height: 150, borderRadius: 15 }}
           />
         </View>
-        <ProductList products={products} />
+        <ProductList products={products} flatlist={false} />
       </ScrollView>
     </>
   );
