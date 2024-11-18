@@ -1,14 +1,29 @@
 import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
+import Colors from '@/constants/Colors';
+import { Stack } from 'expo-router';
 
-const profile = () => {
+const Page = () => {
   return (
-    <View>
-      <Text>profile</Text>
-    </View>
+    <>
+      <Stack.Screen options={{ headerShown: false }} />
+      <View style={styles.container}>
+        <Text style={styles.text}>Profile</Text>
+      </View>
+    </>
   );
 };
 
-export default profile;
+export default Page;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.black,
+  },
+  text: {
+    color: Colors.white,
+  },
+});
