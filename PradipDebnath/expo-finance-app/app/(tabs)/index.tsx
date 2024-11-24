@@ -7,6 +7,8 @@ import Header from '@/components/Header';
 import { PieChart } from 'react-native-gifted-charts';
 import ExpenseBlock from '@/components/ExpenseBlock';
 import ExpensList from '@/data/expenses.json';
+import IncomeBlock from '@/components/IncomeBlock';
+import incomeList from '@/data/income.json';
 
 const Page = () => {
   const pieData = [
@@ -80,6 +82,8 @@ const Page = () => {
           </View>
 
           <ExpenseBlock expensList={ExpensList} />
+
+          <IncomeBlock incomeList={incomeList} />
         </ScrollView>
       </View>
     </>

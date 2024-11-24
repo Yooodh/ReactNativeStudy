@@ -1,28 +1,103 @@
-import { FlatList, ListRenderItem, StyleSheet, Text, View } from 'react-native';
+import {
+  FlatList,
+  ListRenderItem,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React from 'react';
 import { ExpenseType } from '@/types';
 import Colors from '@/constants/Colors';
+import { Feather } from '@expo/vector-icons';
 
 const ExpenseBlock = ({ expensList }: { expensList: ExpenseType[] }) => {
-  const renderItem: ListRenderItem<Partial<ExpenseType>> = ({ item }) => {
+  const renderItem: ListRenderItem<Partial<ExpenseType>> = ({
+    item,
+    index,
+  }) => {
+    if (index == 0) {
+      return (
+        <TouchableOpacity onPress={() => {}}>
+          <View style={styles.addItemBtn}>
+            <Feather name='plus' size={22} color={'#ccc'} />
+          </View>
+        </TouchableOpacity>
+      );
+    }
     let amount = item.amount?.split('.');
     return (
-      <View style={styles.expenseBlock}>
-        <Text style={styles.ExpenseBlockTxt1}>{item.name}</Text>
-        <Text style={styles.ExpenseBlockTxt2}>
+      <View
+        style={[
+          styles.expenseBlock,
+          {
+            backgroundColor:
+              item.name == 'Food'
+                ? Colors.blue
+                : item.name == 'Saving'
+                ? Colors.white
+                : Colors.tintColor,
+          },
+        ]}
+      >
+        <Text
+          style={[
+            styles.expenseBlockTxt1,
+            {
+              color:
+                item.name == 'Food'
+                  ? Colors.black
+                  : item.name == 'Saving'
+                  ? Colors.black
+                  : Colors.white,
+            },
+          ]}
+        >
+          {item.name}
+        </Text>
+        <Text
+          style={[
+            styles.expenseBlockTxt2,
+            {
+              color:
+                item.name == 'Food'
+                  ? Colors.black
+                  : item.name == 'Saving'
+                  ? Colors.black
+                  : Colors.white,
+            },
+          ]}
+        >
           ${amount[0]}.
           <Text style={styles.expenseBlockTxt2Span}>{amount[1]}</Text>
         </Text>
         <View style={styles.expenseBlock3View}>
-          <Text style={{ color: Colors.white }}>{item.percentage}%</Text>
+          <Text
+            style={[
+              styles.expenseBlockTxt1,
+              {
+                color:
+                  item.name == 'Food'
+                    ? Colors.black
+                    : item.name == 'Saving'
+                    ? Colors.black
+                    : Colors.white,
+              },
+            ]}
+          >
+            {item.percentage}%
+          </Text>
         </View>
       </View>
     );
   };
+
+  const staticItem = [{ name: 'Add Item' }];
+
   return (
-    <View>
+    <View style={{ paddingVertical: 20 }}>
       <FlatList
-        data={expensList}
+        data={staticItem.concat(expensList)}
         renderItem={renderItem}
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -34,6 +109,17 @@ const ExpenseBlock = ({ expensList }: { expensList: ExpenseType[] }) => {
 export default ExpenseBlock;
 
 const styles = StyleSheet.create({
+  addItemBtn: {
+    flex: 1,
+    borderWidth: 2,
+    borderColor: '#666',
+    borderStyle: 'dashed',
+    borderRadius: 10,
+    marginRight: 20,
+    padding: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   expenseBlock: {
     backgroundColor: Colors.tintColor,
     width: 100,
@@ -44,11 +130,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'flex-start',
   },
-  ExpenseBlockTxt1: {
+  expenseBlockTxt1: {
     color: Colors.white,
     fontSize: 14,
   },
-  ExpenseBlockTxt2: {
+  expenseBlockTxt2: {
     color: Colors.white,
     fontSize: 16,
     fontWeight: '600',
