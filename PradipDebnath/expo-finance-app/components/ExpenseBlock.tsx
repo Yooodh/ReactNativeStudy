@@ -11,7 +11,7 @@ import { ExpenseType } from '@/types';
 import Colors from '@/constants/Colors';
 import { Feather } from '@expo/vector-icons';
 
-const ExpenseBlock = ({ expensList }: { expensList: ExpenseType[] }) => {
+const ExpenseBlock = ({ expenseList }: { expenseList: ExpenseType[] }) => {
   const renderItem: ListRenderItem<Partial<ExpenseType>> = ({
     item,
     index,
@@ -97,7 +97,7 @@ const ExpenseBlock = ({ expensList }: { expensList: ExpenseType[] }) => {
   return (
     <View style={{ paddingVertical: 20 }}>
       <FlatList
-        data={staticItem.concat(expensList)}
+        data={staticItem.concat(expenseList)}
         renderItem={renderItem}
         horizontal
         showsHorizontalScrollIndicator={false}
